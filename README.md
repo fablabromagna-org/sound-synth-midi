@@ -42,6 +42,8 @@ In ordine sparso le tecnologie SW adottate nei progetti relativi all'audio/MIDI:
 ### Serata danzante 30/3/2023
 Si è svolta presso il makerspace si Santarcangelo una prima presentazione dei progetti realizzati dai nostri makers.
 
+#### USB MIDI Controller 
+
 Dopo una introduzione a base di cassoni santarcangiolesi offerti da FablabRomagna ai partecipanti, ha aperto le danze il nostro presidente  **Maurizio Conti** presentando un controller MIDI realizzato attorno ad un **Raspberry Pi Pico** (RP2040) con linguaggio **CircuitPython**.
 
 In meno di 60 righe di codice il programma realizza un controller MIDI over USB, gestisce un encoder rotativo per l'invio di un comando MIDI CC e gestisce un modulo [Adafruit Trellis](https://learn.adafruit.com/adafruit-trellis-diy-open-source-led-keypad/overview) per l'invio di comandi MIDI NoteOn/NoteOff.
@@ -57,6 +59,7 @@ Come IDE per CircuitPython è stato mostrato **[Thonny](https://thonny.org/)**, 
 Per la dimostrazione pratica del funzionamento del controller è stato utilizzato un synth su PC di nome  **[HELM](https://tytel.org/helm/)**, un software multipiattaforma libero e open source.
 
 
+#### Lilla
 
 La palla è poi passata a **Sandro Grassia**, che ci ha presentato la sua creatura: **Lilla**. Si tratta di un audio sampler realizzato attorno ad un microcontrollore **Teensy**. Potete leggere la storia del progetto, che Sandro porta avanti da 5 anni, a questo [link](https://fablabromagna.org/lilla-story/).
 Sandro ci ha descritto le macro funzionalità del suo sampler, la logica di funzionamento e alcuni dettagli implementativi specifici, a cui è seguita una demo audio e della navigabilità delle funzionalità tramite display integrato.
@@ -66,6 +69,8 @@ Sandro ha inoltre progettato  il contenitore del suo dispositivo con Fusion360 p
 
 Al questo link potete trovare maggiori **[informazioni sul progetto Lilla](http://lillasampler.it)**
 
+
+#### Lofi Pops 7 & MiniDexed
 
 Ha infine chiuso le danze **Simone Tomaselli** che ci ha presentato due progetti di sintesi sonora.
 
