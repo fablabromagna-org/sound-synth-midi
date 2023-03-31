@@ -40,11 +40,11 @@ In ordine sparso le tecnologie SW adottate nei progetti relativi all'audio/MIDI:
 
 
 ### Serata danzante 30/3/2023
-Si è svolta presso il makerspace si Santarcangelo una prima presentazione dei progetti realizzati dai nostri makers.
+Si è svolta presso il makerspace di Santarcangelo una prima presentazione dei progetti realizzati dai nostri makers.
 
 #### USB MIDI Controller 
 
-Dopo una introduzione a base di cassoni santarcangiolesi offerti da FablabRomagna ai partecipanti, ha aperto le danze il nostro presidente  **Maurizio Conti** presentando un controller MIDI realizzato attorno ad un **Raspberry Pi Pico** (RP2040) con linguaggio **CircuitPython**.
+Dopo una introduzione a base di cassoni santarcangiolesi offerti da Fablab Romagna ai partecipanti, ha aperto le danze il nostro presidente  **Maurizio Conti** presentando un controller MIDI realizzato attorno ad un **Raspberry Pi Pico** (RP2040) con linguaggio **CircuitPython**.
 
 In meno di 60 righe di codice il programma realizza un controller MIDI over USB, gestisce un encoder rotativo per l'invio di un comando MIDI CC e gestisce un modulo [Adafruit Trellis](https://learn.adafruit.com/adafruit-trellis-diy-open-source-led-keypad/overview) per l'invio di comandi MIDI NoteOn/NoteOff.
 
@@ -80,7 +80,7 @@ Il secondo progetto (**MiniDexed**) invece implementa un emulatore software di u
 Il progetto open source che Simone utilizza nel suo prodotto è [MiniDexed](https://github.com/probonopd/MiniDexed).
 > Nella pagina github è possibile trovare interessanti informazioni sull'utilizzo di sw baremetal su raspberry, sulle librerie di sintesi utilizzate e sui dettagli implementativi.
 
-Per entrambi i progetti Simone utilizza scatole standard commerciali per le quali poi crea e disegna frontalini originali e customizzati anche sulle richieste dei clienti.
+Per entrambi i progetti Simone utilizza le classiche scatole TEKO per le quali crea e disegna frontalini originali e customizzati anche sulle richieste dei clienti.
 
 Potete trovare maggiori informazioni a questo [link](https://constructure.bio.link)
 
