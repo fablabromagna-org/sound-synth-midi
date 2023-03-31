@@ -9,7 +9,10 @@ Eventuali esempi di codice saranno inseriti nella directory `/sources` mentre pr
 
 
 ## I progetti dei nostri makers
-...
+
+- [Lilla](http://lillasampler.it) - Sandro Grassia
+- [MiniDexed](https://github.com/probonopd/MiniDexed) - Simone Tomaselli
+- [LOFI POPS 7](https://www.youtube.com/watch?v=sYu-AwnDNEU&t=2s)- Simone Tomaselli
 
 
 ## Tecnologie, progetti e librerie 
@@ -66,7 +69,7 @@ E' possibile trovare maggiori informazioni sul progetto Lilla a [questo link](ht
 
 Ha infine chiuso le danze Simone Tomaselli che ci ha presentato due progetti di sintesi sonora.
 
-Il primo (LOFI POPS) realizza una riedizione in chiave moderna di un Kork Minipops anni 60. Realizzato su Arduino UNO, il dispositivo implementa una batteria elettronica con audio generato in PWM; è possibile selezionare diversi pattern ritmici preimpostati, variare volume e tempo e disabilitare selettivamente uno degli 8 "strumenti" che compongono il pattern. Inoltre è possibile utilizzare un segnale sync e reset esterno. 
+Il primo (LOFI POPS 7) realizza una riedizione in chiave moderna di un Kork Minipops anni 60. Realizzato su Arduino UNO, il dispositivo implementa una batteria elettronica con audio generato in PWM; è possibile selezionare diversi pattern ritmici preimpostati, variare volume e tempo e disabilitare selettivamente uno degli 8 "strumenti" che compongono il pattern. Inoltre è possibile utilizzare un segnale sync e reset esterno. 
 
 Il secondo progetto (MiniDexed) invece implementa un emulatore software di una tastiera Yamaha DX7 ed è basato su Raspberry Pi. La peculiarità di questa soluzione, rispetto ad altre implementazioni software per PC, è quella di utilizzare un sw baremetal sul Raspberry. Non viene quindi utilizzato alcun sistema operativo, ma viene eseguito solo il software di sintesi sonora. Oltre alla parte synth il software gestisce un display LCD, un encoder/pulsante e una porta MIDI IN attraverso il GPIO del Raspberry PI.
 Il progetto open source che Simone utilizza nel suo prodotto è [MiniDexed](https://github.com/probonopd/MiniDexed).
