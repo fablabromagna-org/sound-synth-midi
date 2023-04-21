@@ -15,6 +15,12 @@ Eventuali esempi di codice saranno inseriti nella directory `/sources` mentre pr
 - [LOFI POPS 7](https://www.youtube.com/watch?v=sYu-AwnDNEU&t=2s)- Simone Tomaselli
 
 
+
+## Sperimentazione e approfondimenti @ fablabromagna
+
+- [Sperimentazione MIDI-BLE](./midi_ble_upython) - Ivan Tarozzi
+
+
 ## Tecnologie, progetti e librerie 
 
 In ordine sparso le tecnologie SW adottate nei progetti relativi all'audio/MIDI:
