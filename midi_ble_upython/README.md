@@ -67,8 +67,8 @@ Rispetto al dispositivo implementato con Arduino, questa versione ha 2 comportam
 
 Sul primo, viene riconosciuto dall'app MIDI+BTLE ma al momento di eseguire la connessione mostra uno strana icona come di errore. Nonostante questo il successivo funzionamento è garantito. Attraverso l'app MIDI Scope posso vedere i messaggi.
 
-Con Linux invece il primo abbinamento va a buon fine, vedo il device MIDI nelle app di routing Audio/MIDi di sistema e posso catturare i messaggi con MIDI Monitor. Quando però vado a spegnere e riaccendere il dispositivo, lo stack BT di Linux tenta il ricollegamento automatico che però fallisce, ed entra in un loop di connessione-disconnesisone infinito. 
-Credo di aver individuato un problema a livello di autenticazione, ma devo indagare. Se si disaccoppia e si riesegue la connessione tutto torna ok (ma rente il device inutilizzabile in un caso reale).
+Con Linux invece il primo abbinamento va a buon fine, vedo il device MIDI nelle app di routing Audio/MIDi di sistema e posso catturare i messaggi con MIDI Monitor. Quando però vado a spegnere e riaccendere il dispositivo, lo stack BT di Linux tenta il ricollegamento automatico che però fallisce, ed entra in un loop di connessione-disconnessione infinito. 
+Credo di aver individuato un problema a livello di autenticazione, ma devo indagare. Se si disaccoppia e si riesegue la connessione tutto torna ok (ma rende il device inutilizzabile in un caso reale).
 > l'implementazione Arduino funziona invece correttamente anche in questo frangente con Linux.
 
 Su iPad e OsX il problema non si pone perchè (almeno nelle versioni non recenti da me testate, il device deve essere riconnesso manualmente ogni volta).
