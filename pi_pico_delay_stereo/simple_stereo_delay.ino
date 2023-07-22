@@ -24,7 +24,7 @@ Single-Supply Operation (2.5V to 5.5V)
 #include <I2S.h>
 
 
-// pin i2S per ADC canale L
+// Istanzio i2S per ADC canale L
 I2S i2s_L(OUTPUT);
 
 // collegamento DAC L
@@ -37,7 +37,7 @@ I2S i2s_L(OUTPUT);
 #define pWS_L (pBCLK + 1) // LRC  --> GPIO 21 - the WS (word select) signal, which toggles before the sample for each channel is sent
 
 
-// pin i2S per ADC canale R
+// Istanzio i2S per ADC canale R
 I2S i2s_R(OUTPUT);
 
 // collegamento DAC R
@@ -62,7 +62,8 @@ If you want left or right channel only, or if you are powering from non-5V power
 to get the desired voltage on SD
 */
 
-/*Sul pin GAIN:
+/*
+Sul pin GAIN:
 You can have a gain of 3dB, 6dB, 9dB, 12dB or 15dB.
     15dB if a 100K resistor is connected between GAIN and GND
     12dB if GAIN is connected directly to GND
@@ -81,7 +82,6 @@ uint16_t in_value_L = 0;
 int in_PIN_R = A1; // 0 --> 3.3V ; Raspberry Pi Pico has a 12-bit resolution GP26 (ADC0, pin 31), GP27 (ADC1, pin 32), GP28 (ADC2, pin 34); the digital value will be between 0-4095 (12bit)
 uint16_t in_value_R = 0;
 
-
 // Delay
 // La coppia di delay (L, R) e' realizzata con due array, della stesssa dimensione, utilizzati come code FIFO per salvare i campioni audio a 16bit
 #define D_fifo_dim 14000 // 44100 --> 1 sec
@@ -90,13 +90,13 @@ uint16_t in_value_R = 0;
 uint16_t D_fifo_L[D_fifo_dim] = {0x00}; // array usato come FIFO per il delay
 int D_read_sample_L = 0;
 int D_write_sample_L = 0;
-int D_rw_value_L = 12000; // ritardo (in samples) tra scrittura e lettura
+int D_rw_value_L = 12000; // ritardo (in sample) tra scrittura e lettura
 
 // coda fifo R
 uint16_t D_fifo_R[D_fifo_dim] = {0x00}; // array usato come FIFO per il delay
 int D_read_sample_R = 0;
 int D_write_sample_R = 0;
-int D_rw_value_R = 8000; // ritardo (in samples) tra scrittura e lettura
+int D_rw_value_R = 8000; // ritardo (in sample) tra scrittura e lettura
 
 // variabili per performance check
 uint32_t T0;
@@ -109,8 +109,8 @@ bool f0 = false;
 // ***********************************************************
 // **************  ELABORAZIONE FLUSSI AUDIO  ****************
 // ***********************************************************
-// codice Hunter Timer ISR
-// Ad ogni chiamata va fornito agli ADC L ed R 1 solo campione, quindi il tempo disponibile per ogni ciclo e': 1/40KHz --> 25us
+// Questa funzione è chiamata attraverso un interrupt con frequenza (di campionamento) Fs pari a 40000.
+// Ad ogni chiamata va fornito agli ADC L ed R un solo campione, quindi il tempo disponibile per ogni ciclo e': 1/40KHz --> 25us
 bool repeating_timer_callback(struct repeating_timer *t)
 {
     // check
@@ -165,7 +165,6 @@ bool repeating_timer_callback(struct repeating_timer *t)
     // somma e scrivi D_fifo
     D_fifo_R[D_write_sample_R] = 0.7 * (in_value_R) + 0.6 * D_fifo_R[D_read_sample_R];
 
-
     return true;
 }
 
@@ -180,7 +179,7 @@ void setup()
     {
         Serial.println("Errore nella i2S_L!");
         while (1)
-            ; // fermo qui
+            ; // stop
     }
 
     // Setup di i2S_R
@@ -192,13 +191,10 @@ void setup()
     {
         Serial.println("Errore nella i2S_R!");
         while (1)
-            ; // fermo qui
+            ; // stop
     }
 
-    // Pin usato per debug hardware
-    pinMode(2, OUTPUT);
-
-    // Hunter: Negative delay so means we will call repeating_timer_callback, and call it again
+    // Codice Hunter; negative delay so means we will call repeating_timer_callback, and call it again
     // 25us (40kHz) later regardless of how long the callback took to execute
     add_repeating_timer_us(-25, repeating_timer_callback, NULL, &timer);
 }
