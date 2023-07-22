@@ -4,7 +4,7 @@ Un repository per raccogliere idee, informazioni e progetti riguardanti la sinte
 
 Info, link dei vari progetti e sistemi, o dei componenti elettronici utilizzati, verranno elencati nei successivi paragrafi.
 
-Eventuali esempi di codice saranno inseriti nella directory `/sources` mentre progetti piÙ completi troveranno spazio in un repository dedicato, di cui inserire il link nell'apposita sezione di questo documento.
+Eventuali esempi di codice saranno inseriti nelle directory di competenza (ogni autore ha la facoltà di crearne di nuove, pur cercando di mantenere una coerenza organizzativa per argomento o per tipologia di HW);  progetti piÙ completi troveranno invece spazio in un repository dedicato, di cui inserire il link nell'apposita sezione di questo documento.
 
 
 
