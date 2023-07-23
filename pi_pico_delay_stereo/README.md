@@ -1,4 +1,4 @@
-# Semplice audio delay con Raspberry Pi Pico 
+# Audio delay con Raspberry Pi Pico 
 ### per la comprensione dei concetti fondamentali dell'elaborazione audio real-time
 
 
