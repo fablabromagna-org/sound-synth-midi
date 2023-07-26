@@ -16,5 +16,5 @@ https://github.com/fablabromagna-org/sound-synth-midi/assets/41198542/2fde0d05-7
 #### Schema a blocchi
 
 <p align="center">
-<img width="400" src="/media/delay_0.jpg")
+<img width="400" src="/pi_pico_delay_stereo/media/delay_0.jpg")
 </p>
