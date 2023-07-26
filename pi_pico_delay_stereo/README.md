@@ -14,6 +14,7 @@ https://github.com/fablabromagna-org/sound-synth-midi/assets/41198542/2fde0d05-7
 
 
 
+
 #### Schema a blocchi
 
 Lo schema ingresso-uscita seguente illustra l'articolazione del delay nei suoi componenti (sommatore, moltiplicatori per costanti, delay), l'interconnessione tra gli stessi e la direzione del flusso di elaborazione.
