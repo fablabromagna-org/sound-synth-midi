@@ -8,7 +8,7 @@ Nota sul DAC MAX98357A
 The digital audio interface accepts specified sample rates between 8kHz
 and 96kHz for all supported data formats. The ICs can be configured to produce a
 left channel, right channel, or (left/2 + right/2) output from the stereo input data.
-N.B.: the output is a ~300KHz square wave PWM that is then 'averaged out' by the speaker coil.
+N.B.: the output is a ~300kHz square wave PWM that is then 'averaged out' by the speaker coil.
 
 The IC operate using 16/24/32-bit data for I2S.
 Single-Supply Operation (2.5V to 5.5V)
@@ -84,7 +84,7 @@ uint16_t in_value_R = 0;
 
 // Delay
 // La coppia di delay (L, R) e' realizzata con due array, della stesssa dimensione, utilizzati come code FIFO per salvare i campioni audio a 16bit
-#define D_fifo_dim 14000 // 44100 --> 1 sec
+#define D_fifo_dim 14000 // 14000 campioni corrispondono a 350ms
 
 // coda fifo L
 uint16_t D_fifo_L[D_fifo_dim] = {0x00}; // array usato come FIFO per il delay
@@ -110,7 +110,7 @@ bool f0 = false;
 // **************  ELABORAZIONE FLUSSI AUDIO  ****************
 // ***********************************************************
 // Questa funzione è chiamata attraverso un interrupt con frequenza (di campionamento) Fs pari a 40000.
-// Ad ogni chiamata va fornito agli ADC L ed R un solo campione, quindi il tempo disponibile per ogni ciclo e': 1/40KHz --> 25us
+// Ad ogni chiamata va fornito agli ADC L ed R un solo campione, quindi il tempo disponibile per ogni ciclo e': 1/40kHz --> 25us
 bool repeating_timer_callback(struct repeating_timer *t)
 {
     // check
