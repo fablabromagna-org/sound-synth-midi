@@ -1,5 +1,5 @@
 # Audio delay con Raspberry Pi Pico 
-### per la comprensione dei concetti fondamentali dell'elaborazione audio real-time
+### Un esercizio per illustrare alcuni concetti dell'elaborazione audio real-time
 
 
 Questo semplice dispositivo, realizzato con un Raspberry Pi Pico ed una coppia di DAC I2S MAX98357A, è un delay stereo con campionamento 12bit - 40Ksps (samples per second) assai semplificato, perché privo di comandi/regolazioni come anche di filtri anti aliasing agli ingressi.
