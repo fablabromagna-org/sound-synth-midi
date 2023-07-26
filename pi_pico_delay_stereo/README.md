@@ -13,7 +13,10 @@ Nel video seguente una breve registrazione dell'effetto; all'ingresso del delay 
 https://github.com/fablabromagna-org/sound-synth-midi/assets/41198542/2fde0d05-7ad2-4d5e-9d04-8c904a834ee6
 
 
+
 #### Schema a blocchi
+
+Lo schema ingresso-uscita seguente illustra l'articolazione del delay nei suoi componenti (sommatore, moltiplicatori per costanti, delay), l'interconnessione tra gli stessi e la direzione del flusso di elaborazione.
 
 <p align="left">
 <img width="600" src="/pi_pico_delay_stereo/media/delay_0.jpg")
