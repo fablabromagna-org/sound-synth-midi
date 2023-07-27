@@ -27,15 +27,18 @@ Come nasce questo schema? Da una semplice intuizione: per esperienza comune un s
 
 Nel passaggio alla "macchina", questo schema potrà essere realizzato in tutto/in parte tenendo conto delle modalità operative di un algoritmo digitale per applicazioni audio, che presenta questi limiti/caratteristiche:
 - valori discreti: la quantizzazione numerica opera per valori discreti, non continui
-- tempo discreto (quantizzato): l'elaborazione avviene mandatoriamente su base temporale discreta.
+- lunghezza di parola finita: range numerico (dinamica) limitata
+- tempo discreto (quantizzato): l'elaborazione avviene mandatoriamente su base temporale discreta
 - numero di operazioni finito: ogni "giro di calcolo" deve avvenire in un tempo finito
 
 Soffermiamoci sulla caretteristica temporale del tempo discreto: in ingresso si riceve una successione di valori (sample) misurati dell'ingresso, poi si esegue una sequenza finita di passi computazionali, infine si fornisce in uscita una sequenza di valori.
 
 Il nostro schema a blocchi è quindi da interpretare nel tempo discreto, eseguendo una sequenza finita di operazioni; in termini di codice lo schema si traduce in una singola funzione lineare. Se:
-- D è il valore del ritardo introdotto dal blocco delay,
-- x(t) il sample in ingresso al tempo t,
-- y(t) il sample in uscita al tempo t,
+- D è il valore del ritardo introdotto dal blocco delay
+- x(t) il sample in ingresso al tempo t
+- y(t) il sample in uscita al tempo t
 
 il calcolo è il seguente:
 Y(t) = C*X(t) + K*Y(t-D)
+
+La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita, ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da lui dipende la "stabilità" dell'algoritmo: per valori >= 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
