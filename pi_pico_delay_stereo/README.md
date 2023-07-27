@@ -22,3 +22,20 @@ Lo schema ingresso-uscita seguente illustra l'articolazione del delay nei suoi c
 <p align="left">
 <img width="600" src="/pi_pico_delay_stereo/media/delay_0.jpg")
 </p>
+
+Come nasce questo schema? Da una semplice intuizione: per esperienza comune un suono con eco è dato dalla somma (in aria) del suono origine con le sue riflessioni (che giungono in ritardo all'origine) e con le riflessioni delle riflessioni.
+
+Nel passaggio alla "macchina", questo schema potrà essere realizzato in tutto/in parte tenendo conto delle modalità operative di un algoritmo digitale per applicazioni audio, che presenta questi limiti/caratteristiche:
+- valori discreti: la quantizzazione numerica opera per valori discreti, non continui
+- tempo discreto (quantizzato): l'elaborazione avviene mandatoriamente su base temporale discreta.
+- numero di operazioni finito: ogni "giro di calcolo" deve avvenire in un tempo finito
+
+Soffermiamoci sulla caretteristica temporale del tempo discreto: in ingresso si riceve una successione di valori (sample) misurati dell'ingresso, poi si esegue una sequenza finita di passi computazionali, infine si fornisce in uscita una sequenza di valori.
+
+Il nostro schema a blocchi è quindi da interpretare nel tempo discreto, e visualizza una sequenza finita di operazioni; in termini di codice lo schema si traduce in una singola funzione lineare. Se:
+- D è il valore del ritardo introdotto dal blocco delay,
+- x(t) il sample in ingresso al tempo t,
+- y(t) il sample in uscita al tempo t,
+
+il calcolo è il seguente:
+Y(t) = C*X(t) + K*Y(t-D)
