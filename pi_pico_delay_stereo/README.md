@@ -32,7 +32,7 @@ Nel passaggio alla "macchina", questo schema potrà essere realizzato in tutto/i
 
 Soffermiamoci sulla caretteristica temporale del tempo discreto: in ingresso si riceve una successione di valori (sample) misurati dell'ingresso, poi si esegue una sequenza finita di passi computazionali, infine si fornisce in uscita una sequenza di valori.
 
-Il nostro schema a blocchi è quindi da interpretare nel tempo discreto, e visualizza una sequenza finita di operazioni; in termini di codice lo schema si traduce in una singola funzione lineare. Se:
+Il nostro schema a blocchi è quindi da interpretare nel tempo discreto, eseguendo una sequenza finita di operazioni; in termini di codice lo schema si traduce in una singola funzione lineare. Se:
 - D è il valore del ritardo introdotto dal blocco delay,
 - x(t) il sample in ingresso al tempo t,
 - y(t) il sample in uscita al tempo t,
