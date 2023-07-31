@@ -31,7 +31,7 @@ La scheda ha alcune caratteristiche che la rendono particolarmente interessante 
 - un paio di led su PCB
 
 
-Di seguito invece alcune "mancanze" emerse durante la sperimentazione (da verifica se aggirabili approfondendo ulteriormente lo studio):
+Di seguito invece alcune "mancanze" emerse durante la sperimentazione (da verificare se sono aggirabili approfondendo ulteriormente lo studio):
 
 - mancanza di un connettore MIDI-IN e/o MIDI-OUT DIN
 - mancanza di connessione MIDI USB Host (per connettere direttamente, ad esempio, una master keyboard USB)
@@ -67,9 +67,9 @@ Le librerie più interessanti sono:
 - [Synthesis ToolKit (SKT)](https://www.pschatzmann.ch/home/projects/the-synthesis-toolkit-skt-library-for-arduino/)
 
 
-In particolare __arduino-audio-tools__ mette a disposizione una quantità notevole di librerie ed esempi per l'audio processing, spaziando da audio encoding/decoding (MPR, ACC, WAV, FLAC) a Sound Generator & Effects, da Audio Streaming ad Audio Sinks di vario tipo (DAC I2S, PWM, Eq, LED Strip/Matrix, FFT, ...).
+In particolare __arduino-audio-tools__ mette a disposizione una quantità notevole di librerie ed esempi per l'audio processing, spaziando da audio encoding/decoding (MP3, ACC, WAV, FLAC) a Sound Generator & Effects, da Audio Streaming ad Audio Sinks di vario tipo (DAC I2S, PWM, Eq, LED Strip/Matrix, FFT, ...).
 
-Per poter utilizzare la libreria __arduino-audio-tools__ con ESP32-AudioKit e LyraT, ci si appoggia sul repository __arduino-audiokit__, che fornisce un layer aggiuntivo per la configurazione e l'utilizzo dei CODEC e della SDv ia SPI.
+Per poter utilizzare la libreria __arduino-audio-tools__ con ESP32-AudioKit e LyraT, ci si appoggia sul repository __arduino-audiokit__, che fornisce un layer aggiuntivo per la configurazione e l'utilizzo dei CODEC e della SD via SPI.
 
 Da notare inoltre che la scheda ESP32-AudioKit è spesso utilizzata da Schatzmann come board di riferimento e negli esempi di __arduino-audio-tools__ una intera sezione è dedicata ad essa :
 [examples/examples-audiokit](https://github.com/pschatzmann/arduino-audio-tools/tree/main/examples/examples-audiokit)
@@ -78,7 +78,7 @@ Da notare inoltre che la scheda ESP32-AudioKit è spesso utilizzata da Schatzman
 Non ho però finora trovato progetti di synth completi, basati su tali librerie, seppure la rete sia piena di tutorial che si focalizzano spesso sulle singole funzionalità... magari è solo questione di cercare meglio su github
 
 
-### Librerie Arduino di Marcel License:  arduino-audio-tools & Co.
+### Librerie Arduino di Marcel License
 
 [Marcel License](https://github.com/marcel-licence) ha creato una libreria Arduino per la sintesi musicale, più una serie di progetti che si appoggiano ad essa per la creazione di organi e pianoforti elettronici, drum machine, multitrack looper. La maggior parte di questi sono basati su ESP32 e scheda AudioKit.
 
@@ -97,6 +97,6 @@ La maggior parte dei progetti di Marcel sono corredati da video YouTube che most
 
 ## Sperimentazione, test e progetti
 
-Dopo l'introduzione sulla scheda ESP32-AudioKit e la carrellata sui possibili framework da utilizzare, seguono una serie di articoli riguardanti esperienze personali di utilizzo, difficoltà incontrate, soluzioni adottate. Il tutto per fare il punto sulle possibilità di sviluppo, sulla maturità dei framework e sulla effettiva facilità di sviluppo, che non sempre è quella dichiarata sulla carta.
+Dopo l'introduzione sulla scheda ESP32-AudioKit e la carrellata sui possibili framework da utilizzare, seguono una serie di articoli riguardanti esperienze personali di utilizzo, difficoltà incontrate, soluzioni adottate. Il tutto per fare il punto sulle possibilità di sviluppo, sulla maturità dei framework e sulla effettiva facilità di programmazione, che non sempre è quella dichiarata sulla carta.
 
 _to be continued_
