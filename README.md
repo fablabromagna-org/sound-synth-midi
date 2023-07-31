@@ -19,6 +19,7 @@ Eventuali esempi di codice saranno inseriti nelle directory di competenza (ogni 
 ## Sperimentazione e approfondimenti @ fablabromagna
 
 - [Sperimentazione MIDI-BLE](./midi_ble_upython) - Ivan Tarozzi
+- [Sperimentazione su ESP32-AudioKit (ESP32-A1S)](./esp32-audiokit) - Ivan Tarozzi
 
 
 ## Tecnologie, progetti e librerie 
