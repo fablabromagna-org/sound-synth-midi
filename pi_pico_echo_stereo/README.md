@@ -74,7 +74,7 @@ e ricordando che per qualsiasi valore z si ha z^0 = 1:
 
 _Y(z) = y(0) + y(1)*z-1 + y(1)*z-2 + ....._ 
 
-Si noti che se la trasformata Z di δ(n) vale 1; infatti in questo caso:
+Si noti che la trasformata Z di δ(n) vale 1; infatti in questo caso:
 
 _Δ(z) = δ(0) + 0 + 0 + .... = 1_
 
