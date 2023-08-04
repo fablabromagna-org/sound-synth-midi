@@ -51,7 +51,7 @@ Chiamiamo in(n) la sequenza di sample in ingresso, out(n) la sequenza di sample 
 In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche.
 
 
-## Modello per la serie di campioni
+##### Modello per la serie di campioni
 Per descrive una sequenza di campioni in termini matematici, partiamo da una sequenza detta "impulso unitario" δ(n), così definita:
        
 _δ(n) vale +1 se n=0 , vale 0 altrove._
@@ -75,6 +75,7 @@ e ricordando che per qualsiasi valore z si ha z^0 = 1:
 _Y(z) = y(0) + y(1)*z-1 + y(1)*z-2 + ....._ 
 
 Si noti che se la trasformata Z di δ(n) vale 1; infatti in questo caso:
+
 _Δ(z) = δ(0) + 0 + 0 + .... = 1_
 
 Esistono altre particolari sequenze per cui la funzione Z trasformata assume forme di rilievo; ad esempio, si può dimostrare che la sequenza costituita da sample unitari, ha la seguente trasformata Z:
@@ -82,4 +83,4 @@ Esistono altre particolari sequenze per cui la funzione Z trasformata assume for
 _G(z) = 1 + z^-1 + z^-2 + z^-3 + ........ = z/(z-1)_
 
 
-## Modello per l'algoritmo
+##### Modello per l'algoritmo
