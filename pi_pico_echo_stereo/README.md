@@ -54,13 +54,12 @@ In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a model
 
 Per descrive una sequenza di campioni in termini matematici, partiamo da una sequenza detta "impulso unitario" δ(t), così definita:
        
-δ(t) = 1 se t=0 , 0 altrove
+δ(t) vale +1 se t=0 , vale 0 altrove.
 
 La sequenza ha il primo campione di valore 1, tutti i campioni seguenti con valore 0. Con questo formalismo allora la sequenza:
     
-δ(t-P) = 1 se t-P=0 cioè t=P , 0 altrove
+δ(t-P) vale +1 se t-P=0 (cioè t=P) , vale 0 altrove.
 
-è costituita dal sample P-esimo di valore 1, e tutti gli altri sample nulli.
 Per descrivere una qualsiasi sequenza di campioni X(t) scriviamo:
 
 X(t) = k0*δ(t) + k1*δ(t-1) + k2*δ(t-2) + ......
