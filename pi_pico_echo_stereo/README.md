@@ -46,23 +46,19 @@ Il blocco delay è realizzato con un array di dimensione almeno pari a D+1; nel 
 L'algoritmo riceve in input una successione di valori (sample) misurati dell'ingresso e fornisce in output un'altra successione di valori:
 
 <p align="left">
-<img width="1200" src="/pi_pico_delay_stereo/media/z_0.jpg")
+<img width="600" src="/pi_pico_delay_stereo/media/z_0.jpg")
 </p>
 
 Chiamiamo in(n) la sequenza di sample in ingresso, out(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc.
 In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il delay, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un modello matematico del delay, e lo si studia con simulazioni automatiche; il passaggio dal modello a blocchi al modello matematico può essere inizialmente faticoso tuttavia si rivela ricco poi di spunti e di creatività.
 
 Per descrive una sequenza di campioni in termini matematici, partiamo da una sequenza detta "impulso unitario" δ(t), così definita:
-
-       1 se t=0
-δ(t) = 
-       0 altrove
+       
+δ(t) = 1 se t=0 , 0 altrove
 
 La sequenza ha il primo campione di valore 1, tutti i campioni seguenti con valore 0. Con questo formalismo allora la sequenza:
-
-          1 se t-P=0 cioè t=P
-δ(t-P) = 
-          0 altrove
+    
+δ(t-P) = 1 se t-P=0 cioè t=P , 0 altrove
 
 è costituita dal sample P-esimo di valore 1, e tutti gli altri sample nulli.
 Per descrivere una qualsiasi sequenza di campioni X(t) scriviamo:
