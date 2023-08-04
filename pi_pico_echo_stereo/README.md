@@ -12,8 +12,6 @@ Nel video seguente una breve registrazione dell'effetto; all'ingresso è collega
 https://github.com/fablabromagna-org/sound-synth-midi/assets/41198542/2fde0d05-7ad2-4d5e-9d04-8c904a834ee6
 
 
-
-
 #### Schema a blocchi
 
 Lo schema ingresso-uscita seguente illustra l'articolazione dell'effetto echo nei suoi componenti: il delay ed i blocchi sommatore e moltiplicatore , l'interconnessione tra gli stessi e la direzione del flusso di elaborazione.
@@ -41,7 +39,7 @@ La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghez
 Il blocco delay è realizzato con un array di dimensione almeno pari a D+1; nel codice si usano due array, uno per canale, di dimensione 14000, in grado di memorizzare 14000 sample, pari a 14000*25us=350ms; il valore massimo per D è quindi 13999*25us.
 
 
-#### La risposta impulsiva
+#### Modellizzazione
 
 L'algoritmo riceve in input una successione di valori (sample) misurati dell'ingresso e fornisce in output un'altra successione di valori:
 
@@ -50,21 +48,38 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 </p>
 
 Chiamiamo in(n) la sequenza di sample in ingresso, out(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc.
-In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il delay, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un modello matematico del delay, e lo si studia con simulazioni automatiche; il passaggio dal modello a blocchi al modello matematico può essere inizialmente faticoso tuttavia si rivela ricco poi di spunti e di creatività.
+In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche.
 
-Per descrive una sequenza di campioni in termini matematici, partiamo da una sequenza detta "impulso unitario" δ(t), così definita:
+
+## Modello per la serie di campioni
+Per descrive una sequenza di campioni in termini matematici, partiamo da una sequenza detta "impulso unitario" δ(n), così definita:
        
-δ(t) vale +1 se t=0 , vale 0 altrove.
+_δ(n) vale +1 se n=0 , vale 0 altrove._
 
-La sequenza ha il primo campione di valore 1, tutti i campioni seguenti con valore 0. Con questo formalismo allora la sequenza:
+La sequenza ha il primo campione di valore +1, tutti i campioni seguenti con valore 0. La sequenza seguente:
     
-δ(t-P) vale +1 se t-P=0 (cioè t=P) , vale 0 altrove.
+_δ(n-P) vale +1 se n-P=0 (cioè n=P) , vale 0 altrove._
 
-Per descrivere una qualsiasi sequenza di campioni X(t) scriviamo:
+Siamo ora in grado di descrivere una qualsiasi sequenza di campioni y(n); se scriviamo:
 
-X(t) = k0*δ(t) + k1*δ(t-1) + k2*δ(t-2) + ......
+_y(n) = k0*δ(n) + k1*δ(n-1) + k2*δ(n-2) + ......_
 
-La sequenza ha il primo sample di valore k0, il secondo di valore k1, etc.
+La sequenza y(n) ha il primo sample di valore k0, il secondo di valore k1, etc.
 
-Abbandoniamo per ora questo formalismo; vediamo direttamente come risponde il nostro delay alla sequenza δ(t) costituita da un unico campione quindi, nel caso D = 20:
+Eseguiamo ora la seguente applicazione (trasformazione) sulla sequenza di campioni y(n), che chiamiamo _trasformata Z_ di y(n); definiamo la funzione trasformata Y(z) seguente:
 
+_Y(z) = y(0)*z^0 + y(1)*z-1 + y(1)*z-2 + ..... _ 
+
+e ricordando che per qualsiasi valore z si ha z^0 = 1:
+
+_Y(z) = y(0) + y(1)*z-1 + y(1)*z-2 + ..... _ 
+
+Si noti che se la trasformata Z di δ(n) vale 1; infatti in questo caso:
+_Δ(z) = δ(0) + 0 + 0 + .... = 1_
+
+Esistono altre particolari sequenze per cui la funzione Z trasformata assume forme di rilievo; ad esempio, si può dimostrare che la sequenza costituita da sample unitari, ha la seguente trasformata Z:
+
+_G(z) = 1 + z^-1 + z^-2 + z^-3 + ........ = z/(z-1)_
+
+
+## Modello per l'algoritmo
