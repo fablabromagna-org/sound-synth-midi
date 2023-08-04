@@ -19,7 +19,7 @@ https://github.com/fablabromagna-org/sound-synth-midi/assets/41198542/2fde0d05-7
 Lo schema ingresso-uscita seguente illustra l'articolazione dell'effetto echo nei suoi componenti: il delay ed i blocchi sommatore e moltiplicatore , l'interconnessione tra gli stessi e la direzione del flusso di elaborazione.
 
 <p align="left">
-<img width="600" src="/pi_pico_delay_stereo/media/delay_0.jpg")
+<img width="600" src="/pi_pico_echo_stereo/media/delay_0.jpg")
 </p>
 
 Lo schema nasce da una semplice intuizione: per esperienza comune un suono con eco è dato dalla somma (in aria) del suono origine, dello stesso suono riflesso (che giunge con un certo ritardo all'origine), e delle ulteriori riflessioni delle riflessioni.
@@ -46,7 +46,7 @@ Il blocco delay è realizzato con un array di dimensione almeno pari a D+1; nel 
 L'algoritmo riceve in input una successione di valori (sample) misurati dell'ingresso e fornisce in output un'altra successione di valori:
 
 <p align="left">
-<img width="600" src="/pi_pico_delay_stereo/media/z_0.jpg")
+<img width="600" src="/pi_pico_echo_stereo/media/z_0.jpg")
 </p>
 
 Chiamiamo in(n) la sequenza di sample in ingresso, out(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc.
