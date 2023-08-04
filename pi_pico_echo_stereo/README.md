@@ -68,11 +68,11 @@ La sequenza y(n) ha il primo sample di valore k0, il secondo di valore k1, etc.
 
 Eseguiamo ora la seguente applicazione (trasformazione) sulla sequenza di campioni y(n), che chiamiamo _trasformata Z_ di y(n); definiamo la funzione trasformata Y(z) seguente:
 
-_Y(z) = y(0)*z^0 + y(1)*z-1 + y(1)*z-2 + ..... _ 
+_Y(z) = y(0)*z^0 + y(1)*z-1 + y(1)*z-2 + ....._ 
 
 e ricordando che per qualsiasi valore z si ha z^0 = 1:
 
-_Y(z) = y(0) + y(1)*z-1 + y(1)*z-2 + ..... _ 
+_Y(z) = y(0) + y(1)*z-1 + y(1)*z-2 + ....._ 
 
 Si noti che se la trasformata Z di δ(n) vale 1; infatti in questo caso:
 _Δ(z) = δ(0) + 0 + 0 + .... = 1_
