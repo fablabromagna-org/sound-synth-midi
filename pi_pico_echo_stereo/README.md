@@ -28,11 +28,11 @@ Nell'esercizio, il codice ha la totale responsabilità del rispetto del timing. 
 
 In termini di codice, lo schema a blocchi si traduce in una singola funzione lineare; infatti se:
 - D è il valore del ritardo (come numero di sample) introdotto dal blocco delay
-- x(t) il sample in ingresso al tempo t
-- y(t) il sample in uscita al tempo t
+- x(n) il sample in ingresso all'istante n
+- y(n) il sample in uscita all'istante n
 
 dallo schema a blocchi risuta che:
-Y(t) = C*X(t) + K*Y(t-D)
+_y(n) = C*x(n) + K*y(n-D)_
 
 La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da esso dipende la "stabilità" dell'algoritmo: per valori K > 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
 
@@ -51,7 +51,7 @@ Chiamiamo in(n) la sequenza di sample in ingresso, out(n) la sequenza di sample 
 In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche.
 
 
-##### Modello per la serie di campioni
+##### Modello per sequenze/serie di campioni
 Per descrive una sequenza di campioni in termini matematici, partiamo da una sequenza detta "impulso unitario" δ(n), così definita:
        
 _δ(n) vale +1 se n=0 , vale 0 altrove._
@@ -64,23 +64,57 @@ Siamo ora in grado di descrivere una qualsiasi sequenza di campioni y(n); se scr
 
 _y(n) = k0*δ(n) + k1*δ(n-1) + k2*δ(n-2) + ......_
 
-La sequenza y(n) ha il primo sample di valore k0, il secondo di valore k1, etc.
+la sequenza y(n) ha il primo sample di valore k0, il secondo di valore k1, etc.
 
 Eseguiamo ora la seguente applicazione (trasformazione) sulla sequenza di campioni y(n), che chiamiamo _trasformata Z_ di y(n); definiamo la funzione trasformata Y(z) seguente:
 
-_Y(z) = y(0)*z^0 + y(1)*z-1 + y(1)*z-2 + ....._ 
+_Y(z) = k0*z^0 + k1*z^(-1) + k2*z^(-2) + ....._ 
 
 e ricordando che per qualsiasi valore z si ha z^0 = 1:
 
-_Y(z) = y(0) + y(1)*z-1 + y(1)*z-2 + ....._ 
+_Y(z) = k0 + k1*z^(-1) + k2*z^(-2) + ....._ 
 
 Si noti che la trasformata Z di δ(n) vale 1; infatti in questo caso:
 
-_Δ(z) = δ(0) + 0 + 0 + .... = 1_
+_Δ(z) = 1 + 0*z^(-1) + 0*z^(-2) + .... = 1_
 
-Esistono altre particolari sequenze per cui la funzione Z trasformata assume forme di rilievo; ad esempio, si può dimostrare che la sequenza costituita da sample unitari, ha la seguente trasformata Z:
+Infine, se consideriamo la generica sequenza r(n) ottenuta ritardando la serie y(n) di D campioni:
 
-_G(z) = 1 + z^-1 + z^-2 + z^-3 + ........ = z/(z-1)_
+_r(n) = 0*δ(n) + 0*δ(n-1) + 0*δ(n-2) + ......+ k0*δ(n-D) + k1*δ(n-D-1) + k2*δ(n-D-2) + ......_
+
+Trasformando r(n), otteniamo:
+
+_R(z) = k0*z^(n-D) + k1*z^(n-D-1) + k2*z^(n-D-2) + ..... = z^(-D) * (k0*δ(n) + k1*δ(n-1) + k2*δ(n-2) + ......) = z^(-D) * Y(Z)
+
+Cioé: la trasformata Z di una successione y(n) ritardata di D campioni si ottiene moltiplicando la trasformata di y(n) per z^(-D).
+Infine, altra importante proprietà della trasformata Z: date due successioni, x(n) ed y(n) e la successione somma s(n)=x(n)+y(n), la trasformata Z di s(n) vale:
+
+_S(z) = X(z) + Y(z)_
 
 
-##### Modello per l'algoritmo
+
+
+##### Modello per l'echo
+Abbiamo visto la relazione ingresso uscita dell'algoritmo per l'echo:
+
+_y(n) = C*x(n) + K*y(n-D)_
+
+Applicando la trasformata Z a questa uguaglianza otteniamo:
+
+_Y(z) = C*X(z) + K*z^(-D)*Y(z)_
+
+da cui:
+
+_Y(z) = X(z) * C/(1 - K*z^(-D))_
+
+Definiamo il secondo termine di questa moltiplicazione funzione di trasferimento del nostro echo:
+
+_H(z) = C/(1 - K*z^(-D))_
+
+da cui:
+
+_Y(z) = X(z) * H(z)_
+
+Attraverso questa serie di passaggi, abbiamo ridotto una elaborazione nel dominio del tempo in una semplice moltiplicazione in un nuovo dominio (quello della variabile z) che, vedremo è legato alla frequenza.
+
+
