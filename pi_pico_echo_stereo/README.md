@@ -56,35 +56,37 @@ Per descrive una sequenza di campioni in termini matematici, partiamo da una seq
        
 _δ(n) vale +1 se n=0 , vale 0 altrove._
 
-La sequenza ha il primo campione di valore +1, tutti i campioni seguenti con valore 0. La sequenza seguente:
-    
-_δ(n-P) vale +1 se n-P=0 (cioè n=P) , vale 0 altrove._
+La sequenza ha il primo campione di valore +1, tutti i campioni seguenti con valore 0. Per indicare un impulso unitario ritardato di D campioni scriviamo:
+     
+_δ(n-D)_
 
-Siamo ora in grado di descrivere una qualsiasi sequenza di campioni y(n); se scriviamo:
+perchè da definizione vale +1 se (n-D)=0 (cioè n=D) , vale 0 altrove.
 
-_y(n) = k0*δ(n) + k1*δ(n-1) + k2*δ(n-2) + ......_
+Siamo ora in grado di descrivere una qualsiasi sequenza di campioni y(n); infatti se scriviamo:
 
-la sequenza y(n) ha il primo sample di valore k0, il secondo di valore k1, etc.
+_y(n) = k0δ(n) + k1δ(n-1) + k2δ(n-2) + ......_
+
+la sequenza y(n) ha il primo sample di valore k0, il secondo di valore k1, il terzo di valore k1, etc.
 
 Eseguiamo ora la seguente applicazione (trasformazione) sulla sequenza di campioni y(n), che chiamiamo _trasformata Z_ di y(n); definiamo la funzione trasformata Y(z) seguente:
 
-_Y(z) = k0*z^0 + k1*z^(-1) + k2*z^(-2) + ....._ 
+_Y(z) = k0z^0 + k1z^(-1) + k2z^(-2) + ....._ 
 
 e ricordando che per qualsiasi valore z si ha z^0 = 1:
 
-_Y(z) = k0 + k1*z^(-1) + k2*z^(-2) + ....._ 
+_Y(z) = k0 + k1z^(-1) + k2z^(-2) + ....._ 
 
 Si noti che la trasformata Z di δ(n) vale 1; infatti in questo caso:
 
-_Δ(z) = 1 + 0*z^(-1) + 0*z^(-2) + .... = 1_
+_Δ(z) = 1 + 0z^(-1) + 0z^(-2) + .... = 1_
 
 Infine, se consideriamo la generica sequenza r(n) ottenuta ritardando la serie y(n) di D campioni:
 
-_r(n) = 0*δ(n) + 0*δ(n-1) + 0*δ(n-2) + ......+ k0*δ(n-D) + k1*δ(n-D-1) + k2*δ(n-D-2) + ......_
+_r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) + ......+ k0δ(n-D) + k1δ(n-D-1) + k2δ(n-D-2) + ......_
 
 Trasformando r(n), otteniamo:
 
-_R(z) = k0*z^(n-D) + k1*z^(n-D-1) + k2*z^(n-D-2) + ..... = z^(-D) * (k0*δ(n) + k1*δ(n-1) + k2*δ(n-2) + ......) = z^(-D) * Y(Z)
+_R(z) = k0z^(n-D) + k1z^(n-D-1) + k2z^(n-D-2) + ..... = z^(-D)(k0δ(n) + k1δ(n-1) + k2δ(n-2) + ......) = z^(-D)Y(Z)
 
 Cioé: la trasformata Z di una successione y(n) ritardata di D campioni si ottiene moltiplicando la trasformata di y(n) per z^(-D).
 Infine, altra importante proprietà della trasformata Z: date due successioni, x(n) ed y(n) e la successione somma s(n)=x(n)+y(n), la trasformata Z di s(n) vale:
@@ -97,19 +99,19 @@ _S(z) = X(z) + Y(z)_
 ##### Modello per l'echo
 Abbiamo visto la relazione ingresso uscita dell'algoritmo per l'echo:
 
-_y(n) = C*x(n) + K*y(n-D)_
+_y(n) = Cx(n) + Ky(n-D)_
 
 Applicando la trasformata Z a questa uguaglianza otteniamo:
 
-_Y(z) = C*X(z) + K*z^(-D)*Y(z)_
+_Y(z) = CX(z) + Kz^(-D)*Y(z)_
 
 da cui:
 
-_Y(z) = X(z) * C/(1 - K*z^(-D))_
+_Y(z) = X(z) * C/(1 - Kz^(-D))_
 
 Definiamo il secondo termine di questa moltiplicazione funzione di trasferimento del nostro echo:
 
-_H(z) = C/(1 - K*z^(-D))_
+_H(z) = C/(1 - Kz^(-D))_
 
 da cui:
 
