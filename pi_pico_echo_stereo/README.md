@@ -109,7 +109,7 @@ da cui:
 
 _Y(z) = X(z) * C/(1 - Kz^(-D))_
 
-Definiamo il secondo termine di questa moltiplicazione funzione di trasferimento del nostro echo:
+Definiamo il secondo termine di questa moltiplicazione _funzione di trasferimento H(z)_ del nostro echo:
 
 _H(z) = C/(1 - Kz^(-D))_
 
