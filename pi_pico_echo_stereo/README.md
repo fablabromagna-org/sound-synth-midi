@@ -24,7 +24,7 @@ Lo schema nasce da una semplice intuizione: per esperienza comune un suono con e
 
 Nel passaggio dallo schema a blocchi al codice occorre tener presente che il segnale trattato non è continuo ma campionato; non a tempo continuo ma a tempo discreto. Questo significa che occorre elaborare singoli campioni e fornire in uscita, analogamente, singoli campioni.
 
-Nell'esercizio, il codice ha la totale responsabilità del rispetto del timing. La funzione "repeating_timer_callback", che viene chiamata via interrupt ogni 25us (tempo di campionamento), svolge la funzione di leggere (campionare) i due segnali in ingresso (utilizzando i convertitori AD interni alla scheda Raspberry Pi Pico), effettuyare le elaborazioni audio richieste, infine inviare due campioni (sample) ai due convertitori DA esterni. 25us rappresenta il tempo concesso per effettuare l'elaborazione audio desiderata, e corrisponde ad una frequenza di campionamento pari a 40ksps.
+Nell'esercizio, il codice ha la totale responsabilità del rispetto del timing. La funzione "repeating_timer_callback", che viene chiamata via interrupt ogni 25us (tempo di campionamento), svolge la funzione di leggere (campionare) i due segnali in ingresso (utilizzando i convertitori AD interni alla scheda Raspberry Pi Pico), effettuare le elaborazioni audio richieste, infine inviare due campioni (sample) ai due convertitori DA esterni. 25us rappresenta il tempo concesso per effettuare l'elaborazione audio desiderata, e corrisponde ad una frequenza di campionamento pari a 40ksps.
 
 In termini di codice, lo schema a blocchi si traduce in una singola funzione lineare; infatti se:
 - D è il valore del ritardo (come numero di sample) introdotto dal blocco delay
@@ -47,28 +47,32 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 <img width="600" src="/pi_pico_echo_stereo/media/z_0.jpg")
 </p>
 
-Chiamiamo in(n) la sequenza di sample in ingresso, out(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc.
+Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc.
 In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche.
 
 
-##### Modello per sequenze/serie di campioni
+##### Trasformiamo una sequenza/serie di campioni in una funzione
 Per descrive una sequenza di campioni in termini matematici, partiamo da una sequenza detta "impulso unitario" δ(n), così definita:
        
-_δ(n) vale +1 se n=0 , vale 0 altrove._
+_δ(n) = 1, 0 ,0 , 0 ....._
 
 La sequenza ha il primo campione di valore +1, tutti i campioni seguenti con valore 0. Per indicare un impulso unitario ritardato di D campioni scriviamo:
      
-_δ(n-D)_
+_δ(n-D) = 0, 0, 0, ........, 1, 0, 0, ......
 
-perchè da definizione vale +1 se (n-D)=0 (cioè n=D) , vale 0 altrove.
+perchè, da definizione δ(n-D) vale +1 se n-D=0 (cioè n=D) , vale 0 altrove.
 
-Siamo ora in grado di descrivere una qualsiasi sequenza di campioni y(n); infatti se scriviamo:
+Siamo ora in grado di descrivere una qualsiasi sequenza di campioni y(n):
+
+_y(n) = ko, k1, k2, ......_
+
+in forma di funzione, mettendo assieme i concetti fin qui visti:
 
 _y(n) = k0δ(n) + k1δ(n-1) + k2δ(n-2) + ......_
 
-la sequenza y(n) ha il primo sample di valore k0, il secondo di valore k1, il terzo di valore k1, etc.
 
-Eseguiamo ora la seguente applicazione (trasformazione) sulla sequenza di campioni y(n), che chiamiamo _trasformata Z_ di y(n); definiamo la funzione trasformata Y(z) seguente:
+##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
+Eseguiamo ora la seguente applicazione (trasformazione) sulla sequenza di campioni y(n), che chiamiamo _trasformata Z_ di y(n); definiamo la funzione trasformata Y(z) cioò che si ottiene sostituendo a δ(n-x) il valore z^(-x); otteniamo:
 
 _Y(z) = k0z^0 + k1z^(-1) + k2z^(-2) + ....._ 
 
@@ -94,9 +98,7 @@ Infine, altra importante proprietà della trasformata Z: date due successioni, x
 _S(z) = X(z) + Y(z)_
 
 
-
-
-##### Modello per l'echo
+##### Calcoliamo la funzione di trasferimento Z del nostro echo
 Abbiamo visto la relazione ingresso uscita dell'algoritmo per l'echo:
 
 _y(n) = Cx(n) + Ky(n-D)_
