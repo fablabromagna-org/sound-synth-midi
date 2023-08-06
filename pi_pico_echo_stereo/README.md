@@ -154,10 +154,11 @@ _z^D = K_
 si tratta di una particolare equazione di grado D in z (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui D radici hanno lo stesso modulo |K|^(-D), che è un numero minore di 1 solo se e solo se |K|<1: ciò significa che il nostro echo è stabile se e solo se |K|<1.
 
 
-##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso
+##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
 Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare, ad esempio, la risposta dell'echo ad un ingresso impulsivo.
 
 
 
-##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso
+
+##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
 Sempre con lausilio di Mathworks possiamo visualizzare la risposta in frequenza dell'echo.
