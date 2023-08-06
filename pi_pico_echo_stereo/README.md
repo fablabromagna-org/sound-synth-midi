@@ -56,7 +56,7 @@ Per descrive una successioni di campioni in termini matematici, torna comodo esp
 _δ(n) vale 1 per n=0 e vale 0 per ogni altro valore di n_
 
 <p align="left">
-<img width="600" src="/pi_pico_echo_stereo/media/z_1.jpg")
+<img width="400" src="/pi_pico_echo_stereo/media/z_1.jpg")
 </p>
 
 Vediamo ora che δ(n-D) possiamo spostare il valore 1 nella posizione D:
@@ -64,7 +64,7 @@ Vediamo ora che δ(n-D) possiamo spostare il valore 1 nella posizione D:
 _δ(n-D) vale 1 per n-D=0 ossia per n=D, e vale 0 per ogni altro valore di n_
 
 <p align="left">
-<img width="600" src="/pi_pico_echo_stereo/media/z_2.jpg")
+<img width="400" src="/pi_pico_echo_stereo/media/z_2.jpg")
 </p>
 
 Utilizzando la funzione impulso unitario δ possiamo descrivere una qualsiasi sequenza di campioni x(n); data infatti la sequenza x(n)
