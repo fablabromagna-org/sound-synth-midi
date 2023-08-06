@@ -133,11 +133,11 @@ Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega in
 
 
 ##### Cosa ne facciamo di H(z)? Condizioni per la stabilità
-La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono funzioni in z razionali, esprimibili quindi con un numeratore N ed un denominatore D funzioni di z
+La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono _funzioni polinomiali razionali_ in z, cioè esprimibili con un numeratore A ed un denominatore B che sono polinomi funzioni di z
 
 _H(z) = A(z)/B(z)_
 
-dove entrambi N(z) e D(z) possono essere scomposte in fattori:
+dove entrambi A(z) e B(z), essendo polinomi in z, possono essere scomposti in fattori:
 
 _A(z) = (z - k0)(z - k1)(z - k2)......(z - kN)_
 _B(z) = (z - p0)(z - p1)(z - p2)......(z - pM)_
