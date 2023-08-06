@@ -125,6 +125,8 @@ da cui:
 
 _Y(z) = X(z) * H(z)_
 
-Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega ingresso e uscita in modo _implicito_, in una nuova relazione più astratta ma che le lega in modo _esplicito_.
+<p align="left">
+<img width="300" src="/pi_pico_echo_stereo/media/z_3.jpg")
+</p>
 
-
+Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega ingresso e uscita in modo _implicito_, in una nuova relazione ingrasso-uscita più astratta ma _esplicita_.
