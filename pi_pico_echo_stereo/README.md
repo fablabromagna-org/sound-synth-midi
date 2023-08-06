@@ -77,7 +77,7 @@ _x(n) = x0δ(n) + x1δ(n-1) + x2δ(n-2) + ......_
 
 
 ##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
-Eseguiamo ora la seguente applicazione (trasformazione) sulla successione x(n), che chiamiamo _trasformata Z_ di x(n); definiamo la funzione trasformata Y(z) ciò che si ottiene sostituendo a δ(n-k) il valore z^(-k); otteniamo:
+Eseguiamo ora la seguente applicazione (trasformazione) sulla successione x(n), che chiamiamo _trasformata Z_ di x(n); definiamo la funzione trasformata X(z) ciò che si ottiene sostituendo a δ(n-k) il valore z^(-k); otteniamo:
 
 _X(z) = x0z^0 + x1z^(-1) + x2z^(-2) + ....._ 
 
