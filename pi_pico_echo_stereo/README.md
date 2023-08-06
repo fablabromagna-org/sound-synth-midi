@@ -133,16 +133,21 @@ Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega in
 
 
 ##### Cosa ne facciamo di H(z)? Condizioni per la stabilità
-La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono _funzioni polinomiali razionali_ in z, cioè esprimibili con un numeratore A ed un denominatore B che sono polinomi funzioni di z
+La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono _funzioni polinomiali razionali_ in z, cioè esprimibili con un numeratore A ed un denominatore B che sono polinomi in z:
 
 _H(z) = A(z)/B(z)_
 
-dove entrambi A(z) e B(z), essendo polinomi in z, possono essere scomposti in fattori:
+Siano A(z) e B(z) polinomi in z, di grado rispettivamente N e ed M:
 
-_A(z) = (z - k0)(z - k1)(z - k2)......(z - kN)_
-_B(z) = (z - p0)(z - p1)(z - p2)......(z - pM)_
+_A(z) = az^N + a1z^(N-1) + a2z^(N-2) + ..... + a[N-1]_
+_B(z) = bz^M + b1z^(M-1) + b2z^(M-2) + ..... + b[M-1]_
 
-i valori p0, p1, p2...pM per cui il denominatore B(z) si annulla sono detti _poli_ della funzione H(z). Si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento _instabile_, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente il sistema di dice _stabile_.
+Siano k0, k1, k2 ....k(N-1) le radici del polinomio A(z) e p0, p1, p2,....p(M-1) le radici del polinomio B(z):
+
+_A(z) = a(z - k0)(z - k1)(z - k2)......(z - k[N-1])_
+_B(z) = b(z - p0)(z - p1)(z - p2)......(z - p[M-1])_
+
+Definiamo _poli_ della funzione H(z) i valori p0, p1, p2...pM per cui il denominatore B(z); si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento _instabile_, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente il sistema di dice _stabile_.
 Nel caso del nostro echo, scriviamolo nella forma A(z)/B(z), moltiplicamndo numeratore e denominatore per z^(D):
 
 _H(z) = Cz^D/(z^D - K)_
