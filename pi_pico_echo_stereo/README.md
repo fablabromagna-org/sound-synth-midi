@@ -31,7 +31,7 @@ In termini di codice, lo schema a blocchi si traduce in una singola funzione lin
 - x(n) il sample in ingresso all'istante n
 - y(n) il sample in uscita all'istante n
 
-dallo schema a blocchi risuta che:
+dallo schema a blocchi risulta che:
 _y(n) = C*x(n) + K*y(n-D)_
 
 La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da esso dipende la "stabilità" dell'algoritmo: per valori K > 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
@@ -47,52 +47,58 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 <img width="600" src="/pi_pico_echo_stereo/media/z_0.jpg")
 </p>
 
-Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc.
-In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche.
+Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc. In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stata definito un modello matematico (da Pierre-Simon Laplace, 1749-1827) che consente l'esame di sistemi di elaborazione lineari costituiti da moltiplicatori, sommatori e ritardi: la _trafsormata Z_.
 
 
-##### Trasformiamo una sequenza/serie di campioni in una funzione
-Per descrive una sequenza di campioni in termini matematici, partiamo da una sequenza detta "impulso unitario" δ(n), così definita:
+##### Trasformiamo una serie di campioni in una funzione
+Per descrive una successioni di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
        
-_δ(n) = 1, 0 ,0 , 0 ....._
+_δ(n) vale 1 per n=0 e vale 0 per ogni altro valore di n_
 
-La sequenza ha il primo campione di valore +1, tutti i campioni seguenti con valore 0. Per indicare un impulso unitario ritardato di D campioni scriviamo:
+<p align="left">
+<img width="600" src="/pi_pico_echo_stereo/media/z_1.jpg")
+</p>
+
+Vediamo ora che δ(n-D) possiamo spostare il valore 1 nella posizione D:
      
-_δ(n-D) = 0, 0, 0, ........, 1, 0, 0, ......
+_δ(n-D) vale 1 per n-D=0 ossia per n=D, e vale 0 per ogni altro valore di n_
 
-perchè, da definizione δ(n-D) vale +1 se n-D=0 (cioè n=D) , vale 0 altrove.
+<p align="left">
+<img width="600" src="/pi_pico_echo_stereo/media/z_2.jpg")
+</p>
 
-Siamo ora in grado di descrivere una qualsiasi sequenza di campioni y(n):
+Utilizzando la funzione impulso unitario δ possiamo descrivere una qualsiasi sequenza di campioni x(n); data infatti la sequenza x(n)
 
-_y(n) = ko, k1, k2, ......_
+_x(n) = x0, x1, x2, ......_
 
-in forma di funzione, mettendo assieme i concetti fin qui visti:
+possiamo scrivere x(n) come:
 
-_y(n) = k0δ(n) + k1δ(n-1) + k2δ(n-2) + ......_
+_x(n) = x0δ(n) + x1δ(n-1) + x2δ(n-2) + ......_
 
 
 ##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
-Eseguiamo ora la seguente applicazione (trasformazione) sulla sequenza di campioni y(n), che chiamiamo _trasformata Z_ di y(n); definiamo la funzione trasformata Y(z) cioò che si ottiene sostituendo a δ(n-x) il valore z^(-x); otteniamo:
+Eseguiamo ora la seguente applicazione (trasformazione) sulla successione x(n), che chiamiamo _trasformata Z_ di x(n); definiamo la funzione trasformata Y(z) ciò che si ottiene sostituendo a δ(n-k) il valore z^(-k); otteniamo:
 
-_Y(z) = k0z^0 + k1z^(-1) + k2z^(-2) + ....._ 
+_X(z) = x0z^0 + x1z^(-1) + x2z^(-2) + ....._ 
 
 e ricordando che per qualsiasi valore z si ha z^0 = 1:
 
-_Y(z) = k0 + k1z^(-1) + k2z^(-2) + ....._ 
+_X(z) = x0 + x1z^(-1) + x2z^(-2) + ....._
 
-Si noti che la trasformata Z di δ(n) vale 1; infatti in questo caso:
+Si noti che Δ(z), trasformata Z di δ(n), vale semplicemente 1; infatti in questo caso:
 
 _Δ(z) = 1 + 0z^(-1) + 0z^(-2) + .... = 1_
 
-Infine, se consideriamo la generica sequenza r(n) ottenuta ritardando la serie y(n) di D campioni:
+Infine, se consideriamo la generica successione r(n) ottenuta ritardando la serie y(n) di D campioni:
 
-_r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) + ......+ k0δ(n-D) + k1δ(n-D-1) + k2δ(n-D-2) + ......_
+_r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) + ......+ x0δ(n-D) + x1δ(n-D-1) + x2δ(n-D-2) + ...... = x0δ(n-D) + x1δ(n-D-1) + x2δ(n-D-2) + ......_
 
 Trasformando r(n), otteniamo:
 
-_R(z) = k0z^(n-D) + k1z^(n-D-1) + k2z^(n-D-2) + ..... = z^(-D)(k0δ(n) + k1δ(n-1) + k2δ(n-2) + ......) = z^(-D)Y(Z)
+_R(z) = x0z^(n-D) + x1z^(n-D-1) + x2z^(n-D-2) + ..... = z^(-D)(x0δ(n) + x1δ(n-1) + x2δ(n-2) + ......) = z^(-D)X(Z)_
 
-Cioé: la trasformata Z di una successione y(n) ritardata di D campioni si ottiene moltiplicando la trasformata di y(n) per z^(-D).
+Cioé: la trasformata Z di una successione x(n) ritardata di D campioni si ottiene moltiplicando X(z) per z^(-D).
+
 Infine, altra importante proprietà della trasformata Z: date due successioni, x(n) ed y(n) e la successione somma s(n)=x(n)+y(n), la trasformata Z di s(n) vale:
 
 _S(z) = X(z) + Y(z)_
@@ -103,7 +109,7 @@ Abbiamo visto la relazione ingresso uscita dell'algoritmo per l'echo:
 
 _y(n) = Cx(n) + Ky(n-D)_
 
-Applicando la trasformata Z a questa uguaglianza otteniamo:
+che rappresenta un'uguaglianza tra due successioni; applicando la trasformata Z ad entrambi i membri otteniamo:
 
 _Y(z) = CX(z) + Kz^(-D)*Y(z)_
 
@@ -119,6 +125,6 @@ da cui:
 
 _Y(z) = X(z) * H(z)_
 
-Attraverso questa serie di passaggi, abbiamo ridotto una elaborazione nel dominio del tempo in una semplice moltiplicazione in un nuovo dominio (quello della variabile z) che, vedremo è legato alla frequenza.
+Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega ingresso e uscita in modo _implicito_, in una nuova relazione più astratta ma che le lega in modo _esplicito_.
 
 
