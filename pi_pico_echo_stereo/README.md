@@ -55,20 +55,8 @@ Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in 
 ##### Trasformiamo una serie di campioni in una funzione
 Per descrive una successioni di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
 
-https://latex.codecogs.com/svg.image?&space;
+https://latex.codecogs.com/svg.image?\delta(n)=\left\{\begin{matrix}&plus;1&\text{se&space;n}=0\\0&\text{se&space;n}\neq&space;0\end{matrix}\right.
 
-\[ δ(n) =
-  \begin{cases}
-    +1 & \quad \text{se n=0}\\
-    0  & \quad \text{se n \neq 0}
-  \end{cases}
-\]
-
-_δ(n) vale 1 per n=0 e vale 0 per ogni altro valore di n_
-
-<p align="left">
-<img width="400" src="/pi_pico_echo_stereo/media/z_1.jpg")
-</p>
 
 Vediamo ora che δ(n-D) possiamo spostare il valore 1 nella posizione D:
      
