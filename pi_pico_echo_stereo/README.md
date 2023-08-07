@@ -1,5 +1,3 @@
-\usepackage{amsmath}
-
 # Effetto echo realizzato con Raspberry Pi Pico 
 
 ### Un esercizio per illustrare alcuni concetti dell'elaborazione audio real-time
@@ -57,10 +55,12 @@ Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in 
 ##### Trasformiamo una serie di campioni in una funzione
 Per descrive una successioni di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
 
+https://latex.codecogs.com/svg.image?&space;
+
 \[ δ(n) =
   \begin{cases}
-    +1       & \quad \text{if } n \text{ se n=0}\\
-    -(n+1)/2  & \quad \text{if } n \text{ se n \neq 0}
+    +1 & \quad \text{se n=0}\\
+    0  & \quad \text{se n \neq 0}
   \end{cases}
 \]
 
