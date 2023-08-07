@@ -57,72 +57,70 @@ Per descrive una successioni di campioni in termini matematici, torna comodo esp
 
 _δ(n) vale 1 per n=0 ; vale 0 per ogni altro valore di n_
 
-Vediamo ora che δ(n-D) possiamo spostare il valore 1 nella posizione D:
+Vediamo ora che δ(n-k) possiamo spostare il valore 1 nella posizione k; infatti:
      
-_δ(n-D) vale 1 per n-D=0 ossia per n=D ; vale 0 per ogni altro valore di n_
+_δ(n-k) vale 1 per n-k=0 ossia per n=k ; vale 0 per ogni altro valore di n_
 
 <p align="left">
 <img width="400" src="/pi_pico_echo_stereo/media/z_2.jpg")
 </p>
 
-Utilizzando la funzione impulso unitario δ possiamo descrivere una qualsiasi sequenza di campioni x(n); data infatti la sequenza x(n)
+Utilizzando la funzione impulso unitario δ(n-k) possiamo descrivere una qualsiasi sequenza di campioni con una funzione; data infatti la sequenza di campioni:
 
-_x(n) = x0, x1, x2, ......_
+$x(0), x(1), x(2),$ ......
 
-possiamo scrivere x(n) come:
+possiamo rappresentarla come funzione x(n), costituita da una combinazione lineare di impulsi unitari via via ritardati :
 
-_x(n) = x0δ(n) + x1δ(n-1) + x2δ(n-2) + ......_
-
-$x(n) = x_0δ(n) + x_1δ(n-1) + x_2δ(n-2) +$ ......
+$x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ......
 
 ##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
-Eseguiamo ora la seguente applicazione (trasformazione) sulla successione x(n), che chiamiamo _trasformata Z_ di x(n); definiamo la funzione trasformata X(z) ciò che si ottiene sostituendo a δ(n-k) il valore z^(-k); otteniamo:
+La trasformata Z altro non è che una semplice applicazione sulla successione x(n). Definiamo X(z) _trasformata Z di x(n)_ la funzione che si ottiene sostituendo a δ(n-k) il valore z^(-k); otteniamo:
 
-_X(z) = x0z^0 + x1z^(-1) + x2z^(-2) + ....._ 
+$X(z) = x(0)z^0 + x(1)z^(-1) + x(2)z^(-2) +$ ......
 
 e ricordando che per qualsiasi valore z si ha z^0 = 1:
 
-_X(z) = x0 + x1z^(-1) + x2z^(-2) + ....._
+$X(z) = x(0) + x(1)z^(-1) + x(2)z^(-2) +$ ......
 
 Si noti che Δ(z), trasformata Z di δ(n), vale semplicemente 1; infatti in questo caso:
 
-_Δ(z) = 1 + 0z^(-1) + 0z^(-2) + .... = 1_
+$Δ(z) = 1 + 0z^(-1) + 0z^(-2) +$ ..... $= 1$
 
 Infine, se consideriamo la generica successione r(n) ottenuta ritardando la serie y(n) di D campioni:
 
-_r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) + ......+ x0δ(n-D) + x1δ(n-D-1) + x2δ(n-D-2) + ...... = x0δ(n-D) + x1δ(n-D-1) + x2δ(n-D-2) + ......_
+$r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) +$ ...... $+ x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ...... $= x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ......
 
 Trasformando r(n), otteniamo:
 
-_R(z) = x0z^(n-D) + x1z^(n-D-1) + x2z^(n-D-2) + ..... = z^(-D)(x0δ(n) + x1δ(n-1) + x2δ(n-2) + ......) = z^(-D)X(Z)_
+$R(z) = x(0)z^(n-D) + x(1)z^(n-D-1) + x(2)z^(n-D-2) +$ ...... $= z^(-D)(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...... $) = z^(-D)X(Z)$
 
-Cioé: la trasformata Z di una successione x(n) ritardata di D campioni si ottiene moltiplicando X(z) per z^(-D).
+Cioé: la trasformata Z di una successione x(n) ritardata di D campioni si ottiene moltiplicando $X(z)$ per $z^(-D)$.
 
 Infine, altra importante proprietà della trasformata Z: date due successioni, x(n) ed y(n) e la successione somma s(n)=x(n)+y(n), la trasformata Z di s(n) vale:
 
-_S(z) = X(z) + Y(z)_
+$S(z) = X(z) + Y(z)$
 
 
 ##### Calcoliamo la funzione di trasferimento Z del nostro echo
 Abbiamo visto la relazione ingresso uscita dell'algoritmo per l'echo:
 
-_y(n) = Cx(n) + Ky(n-D)_
+$y(n) = Cx(n) + Ky(n-D)$
 
 che rappresenta un'uguaglianza tra due successioni; applicando la trasformata Z ad entrambi i membri otteniamo:
 
-_Y(z) = CX(z) + Kz^(-D)*Y(z)_
+$Y(z) = CX(z) + Kz^(-D)Y(z)$
 
 da cui:
 
-_Y(z) = X(z) * C/(1 - Kz^(-D))_
+$Y(z) = X(z) * C/(1 - Kz^(-D))$
 
 Definiamo il secondo termine di questa moltiplicazione _funzione di trasferimento H(z)_ del nostro echo:
 
-_H(z) = C/(1 - Kz^(-D))_
+$H(z) = C/(1 - Kz^(-D))$
 
 da cui:
 
-_Y(z) = X(z) * H(z)_
+$Y(z) = X(z) * H(z)$
 
 <p align="left">
 <img width="300" src="/pi_pico_echo_stereo/media/z_3.jpg")
@@ -134,28 +132,28 @@ Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega in
 ##### Cosa ne facciamo di H(z)? Condizioni per la stabilità
 La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono _funzioni polinomiali razionali_ in z, cioè esprimibili con un numeratore A ed un denominatore B che sono polinomi in z:
 
-_H(z) = A(z)/B(z)_
+$H(z) = A(z)/B(z)$
 
 Siano A(z) e B(z) polinomi in z, di grado rispettivamente N e ed M:
 
-_A(z) = az^N + a1z^(N-1) + a2z^(N-2) + ..... + a[N-1]_
-_B(z) = bz^M + b1z^(M-1) + b2z^(M-2) + ..... + b[M-1]_
+$A(z) = a_Nz^N + a_(N-1)z^(N-1) + a(N-2)z^(N-2) +$ ..... $+ a_0$
+$B(z) = b_Mz^M + b_(M-1)z^(M-1) + b(M-2)z^(M-2) +$ ..... $+ b_0$
 
-Siano k0, k1, k2 ....k(N-1) le radici del polinomio A(z) e p0, p1, p2,....p(M-1) le radici del polinomio B(z):
+Siano r_0, r_1, r_2 ....r_(N-1) le N radici del polinomio A(z) e p_0, p_1, p_2,....p_(M-1) le M radici del polinomio B(z):
 
-_A(z) = a(z - k0)(z - k1)(z - k2)......(z - k[N-1])_
-_B(z) = b(z - p0)(z - p1)(z - p2)......(z - p[M-1])_
+$A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ...... $(z - r_(N-1))$
+$B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ...... $(z - p(M-1))$
 
-Definiamo _poli_ della funzione H(z) i valori p0, p1, p2...pM per cui il denominatore B(z); si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento _instabile_, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente il sistema di dice _stabile_.
-Nel caso del nostro echo, scriviamolo nella forma A(z)/B(z), moltiplicamndo numeratore e denominatore per z^(D):
+Definiamo _poli_ della funzione H(z) i valori $p_0, p_1, p_2$ ..... $p_(M-1)$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento _instabile_, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente il sistema di dice _stabile_.
+Nel caso del nostro echo, scriviamolo nella forma $A(z)/B(z)$, moltiplicamndo numeratore e denominatore per $z^(D)$:
 
-_H(z) = Cz^D/(z^D - K)_
+$H(z) = Cz^D/(z^D - K)$
 
-I poli di H(z) sono i valori per cui di (z^D - K) si annulla:
+I poli di H(z) sono i valori per cui di $(z^D - K)$ si annulla cioè per cui vale:
 
-_z^D = K_
+$z^D = K$
 
-si tratta di una particolare equazione di grado D in z (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui D radici hanno lo stesso modulo |K|^(-D), che è un numero minore di 1 solo se e solo se |K|<1: ciò significa che il nostro echo è stabile se e solo se |K|<1.
+Si tratta di una particolare equazione di grado D in z (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui D radici hanno lo stesso modulo $|K|^(-D)$, che è un numero minore di 1 solo se e solo se |K|<1: ciò significa che il nostro echo è stabile se e solo se |K|<1.
 
 
 ##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
