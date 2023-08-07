@@ -36,7 +36,7 @@ dallo schema a blocchi risulta che:
 
 $y(n) = Cx(n) + Ky(n-D)$
 
-La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da esso dipende la "stabilità" dell'algoritmo: per valori K > 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
+La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da esso dipende la **stabilità** dell'algoritmo: per valori K > 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
 
 Il blocco delay è realizzato con un array di dimensione almeno pari a D+1; nel codice si usano due array, uno per canale, di dimensione 14000, in grado di memorizzare 14000 sample, pari a 14000*25us=350ms; il valore massimo per D è quindi 13999*25us.
 
@@ -55,11 +55,11 @@ Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in 
 ##### Trasformiamo una serie di campioni in una funzione
 Per descrive una successioni di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
 
-_δ(n) vale 1 per n=0 ; vale 0 per ogni altro valore di n_
+**δ(n) vale 1 per n=0 ; vale 0 per ogni altro valore di n**
 
 Vediamo ora che δ(n-k) possiamo spostare il valore 1 nella posizione k; infatti:
      
-_δ(n-k) vale 1 per n-k=0 ossia per n=k ; vale 0 per ogni altro valore di n_
+**δ(n-k) vale 1 per n-k=0 ossia per n=k ; vale 0 per ogni altro valore di n**
 
 <p align="left">
 <img width="400" src="/pi_pico_echo_stereo/media/z_2.jpg")
@@ -114,7 +114,7 @@ da cui:
 
 $Y(z) = X(z) * C/(1 - Kz^{-D})$
 
-Definiamo il secondo termine di questa moltiplicazione _funzione di trasferimento H(z)_ del nostro echo:
+Definiamo il secondo termine di questa moltiplicazione **funzione di trasferimento H(z)** del nostro echo:
 
 $H(z) = C/(1 - Kz^{-D})$
 
@@ -130,26 +130,26 @@ Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega in
 
 
 ##### Cosa ne facciamo di H(z)? Condizioni per la stabilità
-La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono _funzioni polinomiali razionali_ in z, cioè esprimibili con un numeratore A ed un denominatore B che sono polinomi in z:
+La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono **funzioni polinomiali razionali** in z, cioè esprimibili con un numeratore A ed un denominatore B che sono polinomi in z:
 
 $H(z) = A(z)/B(z)$
 
 Siano A(z) e B(z) polinomi in z, di grado rispettivamente N e ed M:
 
-$A(z) = a_Nz^N + a_(N-1)z^{N-1} + a(N-2)z^{N-2} +$ ..... $+ a_0$
-$B(z) = b_Mz^M + b_(M-1)z^{M-1} + b(M-2)z^{M-2} +$ ..... $+ b_0$
+$A(z) = a_Nz^N + a_{N-1}z^{N-1} + a_{N-2}z^{N-2} +$ ..... $+ a_0$
+$B(z) = b_Mz^M + b_{M-1}z^{M-1} + b_{M-2}z^{M-2} +$ ..... $+ b_0$
 
-Siano r_0, r_1, r_2 ....r_(N-1) le N radici del polinomio A(z) e p_0, p_1, p_2,....p_(M-1) le M radici del polinomio B(z):
+Siano &r_0, r_1, r_2& ..... &r_(N-1)& le N radici del polinomio A(z) e &p_0, p_1, p_2& ..... &p_(M-1)& le M radici del polinomio B(z):
 
-$A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ...... $(z - r_(N-1))$
-$B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ...... $(z - p(M-1))$
+$A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ...... $(z - r_{N-1})$
+$B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ...... $(z - p_{M-1})$
 
-Definiamo _poli_ della funzione H(z) i valori $p_0, p_1, p_2$ ..... $p_(M-1)$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento _instabile_, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente il sistema di dice _stabile_.
-Nel caso del nostro echo, scriviamolo nella forma $A(z)/B(z)$, moltiplicamndo numeratore e denominatore per $z^(D)$:
+Definiamo _poli_ della funzione H(z) i valori $p_0, p_1, p_2$ ..... $p_{M-1}$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento **instabile**, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente il sistema di dice **stabile**.
+Nel caso del nostro echo, scriviamolo nella forma A(z)/B(z), moltiplicamndo numeratore e denominatore per $z^D$:
 
 $H(z) = Cz^D/(z^D - K)$
 
-I poli di H(z) sono i valori per cui di $(z^D - K)$ si annulla cioè per cui vale:
+I poli di H(z) sono i valori di z per cui di $(z^D - K)$ si annulla, cioè per cui vale:
 
 $z^D = K$
 
@@ -163,4 +163,4 @@ Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.
 
 
 ##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
-Sempre con lausilio di Mathworks possiamo visualizzare la risposta in frequenza dell'echo.
+Sempre con l'ausilio di Mathworks possiamo visualizzare la risposta in frequenza dell'echo.
