@@ -32,7 +32,7 @@ In termini di codice, lo schema a blocchi si traduce in una singola funzione lin
 - y(n) il sample in uscita all'istante n
 
 dallo schema a blocchi risulta che:
-_y(n) = C*x(n) + K*y(n-D)_
+$y(n) = Cx(n) + Ky(n-D)$
 
 La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da esso dipende la "stabilità" dell'algoritmo: per valori K > 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
 
