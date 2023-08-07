@@ -55,12 +55,11 @@ Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in 
 ##### Trasformiamo una serie di campioni in una funzione
 Per descrive una successioni di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
 
-![equation](https://latex.codecogs.com/svg.image?\delta(n)=\left\{\begin{matrix}&plus;1&\text{se&space;n}=0\\0&\text{se&space;n}\neq&space;0\end{matrix}\right.)
-
+_δ(n) vale 1 per n=0 ; vale 0 per ogni altro valore di n_
 
 Vediamo ora che δ(n-D) possiamo spostare il valore 1 nella posizione D:
      
-_δ(n-D) vale 1 per n-D=0 ossia per n=D, e vale 0 per ogni altro valore di n_
+_δ(n-D) vale 1 per n-D=0 ossia per n=D ; vale 0 per ogni altro valore di n_
 
 <p align="left">
 <img width="400" src="/pi_pico_echo_stereo/media/z_2.jpg")
@@ -74,6 +73,7 @@ possiamo scrivere x(n) come:
 
 _x(n) = x0δ(n) + x1δ(n-1) + x2δ(n-2) + ......_
 
+$x(n) = x_0*δ(n) + x_1*δ(n-1) + x_2*δ(n-2) + ......$
 
 ##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
 Eseguiamo ora la seguente applicazione (trasformazione) sulla successione x(n), che chiamiamo _trasformata Z_ di x(n); definiamo la funzione trasformata X(z) ciò che si ottiene sostituendo a δ(n-k) il valore z^(-k); otteniamo:
