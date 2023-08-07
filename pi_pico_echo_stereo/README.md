@@ -144,8 +144,9 @@ Siano &r_0, r_1, r_2& ..... &r_(N-1)& le N radici del polinomio A(z) e &p_0, p_1
 $A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ...... $(z - r_{N-1})$
 $B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ...... $(z - p_{M-1})$
 
-Definiamo _poli_ della funzione H(z) i valori $p_0, p_1, p_2$ ..... $p_{M-1}$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento **instabile**, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente il sistema di dice **stabile**.
-Nel caso del nostro echo, scriviamolo nella forma A(z)/B(z), moltiplicamndo numeratore e denominatore per $z^D$:
+Definiamo _poli_ della funzione H(z) gli M valori $p_0, p_1, p_2$ ..... $p_{M-1}$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento **instabile**, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente, il sistema ha un comportamento **stabile**.
+
+Scriviamo ora la funzione di trasferimento del nostro echo nella forma A(z)/B(z), moltiplicamndo numeratore e denominatore per $z^D$:
 
 $H(z) = Cz^D/(z^D - K)$
 
