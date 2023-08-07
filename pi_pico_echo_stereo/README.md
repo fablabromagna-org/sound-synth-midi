@@ -92,9 +92,9 @@ $r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) +$ ...... $+ x(0)δ(n-D) + x(1)δ(n-D-1) + 
 
 Trasformando r(n), otteniamo:
 
-$R(z) = x(0)z^{n-D} + x(1)z^{n-D-1} + x(2)z^{n-D-2} +$ ...... $= z^(-D)(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...... $) = z^{-D}X(Z)$
+$R(z) = x(0)z^{n-D} + x(1)z^{n-D-1} + x(2)z^{n-D-2} +$ ...... $= z^{-D}(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...... $) = z^{-D}X(Z)$
 
-Cioé: la trasformata Z di una successione x(n) ritardata di D campioni si ottiene moltiplicando $X(z)$ per $z^{-D}$.
+Cioé: la trasformata Z di una successione x(n) ritardata di D campioni si ottiene moltiplicando X(z) per $z^{-D}$.
 
 Infine, altra importante proprietà della trasformata Z: date due successioni, x(n) ed y(n) e la successione somma s(n)=x(n)+y(n), la trasformata Z di s(n) vale:
 
@@ -118,7 +118,7 @@ Definiamo il secondo termine di questa moltiplicazione **funzione di trasferimen
 
 $H(z) = C/(1 - Kz^{-D})$
 
-da cui:
+Infine scriviamo:
 
 $Y(z) = X(z) * H(z)$
 
@@ -126,11 +126,11 @@ $Y(z) = X(z) * H(z)$
 <img width="300" src="/pi_pico_echo_stereo/media/z_3.jpg")
 </p>
 
-Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega ingresso e uscita in modo _implicito_, in una nuova relazione ingresso-uscita più astratta ma _esplicita_.
+Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega ingresso e uscita in modo **implicito**, in una nuova relazione ingresso-uscita più astratta ma **esplicita**.
 
 
 ##### Cosa ne facciamo di H(z)? Condizioni per la stabilità
-La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono **funzioni polinomiali razionali** in z, cioè esprimibili con un numeratore A ed un denominatore B che sono polinomi in z:
+La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono **funzioni razionale fratte** in z, cioè esprimibili con un numeratore A ed un denominatore B che sono polinomi in z:
 
 $H(z) = A(z)/B(z)$
 
