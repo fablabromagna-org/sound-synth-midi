@@ -32,6 +32,7 @@ In termini di codice, lo schema a blocchi si traduce in una singola funzione lin
 - y(n) il sample in uscita all'istante n
 
 dallo schema a blocchi risulta che:
+
 $y(n) = Cx(n) + Ky(n-D)$
 
 La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da esso dipende la "stabilità" dell'algoritmo: per valori K > 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
@@ -52,7 +53,14 @@ Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in 
 
 ##### Trasformiamo una serie di campioni in una funzione
 Per descrive una successioni di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
-       
+
+\[ δ(n) =
+  \begin{cases}
+    +1       & \quad \text{if } n \text{ se n=0}\\
+    -(n+1)/2  & \quad \text{if } n \text{ se n \neq 0}
+  \end{cases}
+\]
+
 _δ(n) vale 1 per n=0 e vale 0 per ogni altro valore di n_
 
 <p align="left">
