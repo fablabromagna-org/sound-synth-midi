@@ -80,11 +80,11 @@ $X(z) = x(0)z^0 + x(1)z^{-1} + x(2)z^{-2} +$ ......
 
 e ricordando che per qualsiasi valore z si ha z^0 = 1:
 
-$X(z) = x(0) + x(1)z^(-1) + x(2)z^(-2) +$ ......
+$X(z) = x(0) + x(1)z^{-1} + x(2)z^{-2} +$ ......
 
 Si noti che Δ(z), trasformata Z di δ(n), vale semplicemente 1; infatti in questo caso:
 
-$Δ(z) = 1 + 0z^(-1) + 0z^(-2) +$ ..... $= 1$
+$Δ(z) = 1 + 0z^{-1} + 0z^{-2} +$ ..... $= 1$
 
 Infine, se consideriamo la generica successione r(n) ottenuta ritardando la serie y(n) di D campioni:
 
@@ -92,9 +92,9 @@ $r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) +$ ...... $+ x(0)δ(n-D) + x(1)δ(n-D-1) + 
 
 Trasformando r(n), otteniamo:
 
-$R(z) = x(0)z^(n-D) + x(1)z^(n-D-1) + x(2)z^(n-D-2) +$ ...... $= z^(-D)(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...... $) = z^(-D)X(Z)$
+$R(z) = x(0)z^{n-D} + x(1)z^{n-D-1} + x(2)z^{n-D-2} +$ ...... $= z^(-D)(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...... $) = z^{-D}X(Z)$
 
-Cioé: la trasformata Z di una successione x(n) ritardata di D campioni si ottiene moltiplicando $X(z)$ per $z^(-D)$.
+Cioé: la trasformata Z di una successione x(n) ritardata di D campioni si ottiene moltiplicando $X(z)$ per $z^{-D}$.
 
 Infine, altra importante proprietà della trasformata Z: date due successioni, x(n) ed y(n) e la successione somma s(n)=x(n)+y(n), la trasformata Z di s(n) vale:
 
@@ -108,15 +108,15 @@ $y(n) = Cx(n) + Ky(n-D)$
 
 che rappresenta un'uguaglianza tra due successioni; applicando la trasformata Z ad entrambi i membri otteniamo:
 
-$Y(z) = CX(z) + Kz^(-D)Y(z)$
+$Y(z) = CX(z) + Kz^{-D}Y(z)$
 
 da cui:
 
-$Y(z) = X(z) * C/(1 - Kz^(-D))$
+$Y(z) = X(z) * C/(1 - Kz^{-D})$
 
 Definiamo il secondo termine di questa moltiplicazione _funzione di trasferimento H(z)_ del nostro echo:
 
-$H(z) = C/(1 - Kz^(-D))$
+$H(z) = C/(1 - Kz^{-D})$
 
 da cui:
 
@@ -136,8 +136,8 @@ $H(z) = A(z)/B(z)$
 
 Siano A(z) e B(z) polinomi in z, di grado rispettivamente N e ed M:
 
-$A(z) = a_Nz^N + a_(N-1)z^(N-1) + a(N-2)z^(N-2) +$ ..... $+ a_0$
-$B(z) = b_Mz^M + b_(M-1)z^(M-1) + b(M-2)z^(M-2) +$ ..... $+ b_0$
+$A(z) = a_Nz^N + a_(N-1)z^{N-1} + a(N-2)z^{N-2} +$ ..... $+ a_0$
+$B(z) = b_Mz^M + b_(M-1)z^{M-1} + b(M-2)z^{M-2} +$ ..... $+ b_0$
 
 Siano r_0, r_1, r_2 ....r_(N-1) le N radici del polinomio A(z) e p_0, p_1, p_2,....p_(M-1) le M radici del polinomio B(z):
 
