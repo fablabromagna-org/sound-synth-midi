@@ -1,4 +1,7 @@
+\usepackage{amsmath}
+
 # Effetto echo realizzato con Raspberry Pi Pico 
+
 ### Un esercizio per illustrare alcuni concetti dell'elaborazione audio real-time
 
 Questo semplice dispositivo realizzato con un Raspberry Pi Pico ed una coppia di DAC I2S MAX98357A, è un effetto echo stereo (anche detto delay) con campionamento 12bit - 40Ksps (samples per second); non include alcuna regolazione esterna né filtri anti aliasing agli ingressi, perchè lo scopo è puramente didattico.
