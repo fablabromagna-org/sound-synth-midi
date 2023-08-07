@@ -73,7 +73,7 @@ possiamo scrivere x(n) come:
 
 _x(n) = x0δ(n) + x1δ(n-1) + x2δ(n-2) + ......_
 
-$x(n) = x_0*δ(n) + x_1*δ(n-1) + x_2*δ(n-2) +$ ......
+$x(n) = x_0δ(n) + x_1δ(n-1) + x_2δ(n-2) +$ ......
 
 ##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
 Eseguiamo ora la seguente applicazione (trasformazione) sulla successione x(n), che chiamiamo _trasformata Z_ di x(n); definiamo la funzione trasformata X(z) ciò che si ottiene sostituendo a δ(n-k) il valore z^(-k); otteniamo:
