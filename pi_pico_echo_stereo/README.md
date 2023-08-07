@@ -139,7 +139,7 @@ Siano A(z) e B(z) polinomi in z, di grado rispettivamente N e ed M:
 $A(z) = a_Nz^N + a_{N-1}z^{N-1} + a_{N-2}z^{N-2} +$ ..... $+ a_0$
 $B(z) = b_Mz^M + b_{M-1}z^{M-1} + b_{M-2}z^{M-2} +$ ..... $+ b_0$
 
-Siano &r_0, r_1, r_2& ..... &r_(N-1)& le N radici del polinomio A(z) e &p_0, p_1, p_2& ..... &p_(M-1)& le M radici del polinomio B(z):
+Siano $r_0, r_1, r_2$ ..... $r_(N-1)$ le N radici del polinomio A(z) e $p_0, p_1, p_2$ ..... $p_(M-1)$ le M radici del polinomio B(z):
 
 $A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ...... $(z - r_{N-1})$
 $B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ...... $(z - p_{M-1})$
