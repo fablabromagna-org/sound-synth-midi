@@ -57,7 +57,7 @@ Per descrive una successioni di campioni in termini matematici, torna comodo esp
 
 **δ(n) vale 1 per n=0 ; vale 0 per ogni altro valore di n**
 
-Vediamo ora che δ(n-k) possiamo spostare il valore 1 nella posizione k; infatti:
+Vediamo ora che scrivendo δ(n-k) l'unico campione diverso da 0 passa nella posizione k; infatti:
      
 **δ(n-k) vale 1 per n-k=0 ossia per n=k ; vale 0 per ogni altro valore di n**
 
