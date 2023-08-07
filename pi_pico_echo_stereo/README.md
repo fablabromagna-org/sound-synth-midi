@@ -74,9 +74,9 @@ possiamo rappresentarla come funzione x(n), costituita da una combinazione linea
 $x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ......
 
 ##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
-La trasformata Z altro non è che una semplice applicazione sulla successione x(n). Definiamo X(z) _trasformata Z di x(n)_ la funzione che si ottiene sostituendo a δ(n-k) il valore z^(-k); otteniamo:
+La trasformata Z altro non è che una semplice applicazione sulla successione x(n). Definiamo X(z) _trasformata Z di x(n)_ la funzione che si ottiene sostituendo a δ(n-k) il valore $z^{-k}$; otteniamo:
 
-$X(z) = x(0)z^0 + x(1)z^(-1) + x(2)z^(-2) +$ ......
+$X(z) = x(0)z^0 + x(1)z^{-1} + x(2)z^{-2} +$ ......
 
 e ricordando che per qualsiasi valore z si ha z^0 = 1:
 
