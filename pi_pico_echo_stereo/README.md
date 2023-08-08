@@ -139,7 +139,7 @@ Siano $A(z)$ e $B(z)$ polinomi di grado rispettivamente $N$ e ed $M$:
 $A(z) = a_Nz^N + a_{N-1}z^{N-1} + a_{N-2}z^{N-2} +$ ..... $+ a_0$
 $B(z) = b_Mz^M + b_{M-1}z^{M-1} + b_{M-2}z^{M-2} +$ ..... $+ b_0$
 
-Siano $r_0, r_1, r_2$ ... $r_(N-1)$ le $N$ radici del polinomio $A(z)$ e $p_0, p_1, p_2$ ..... $p_(M-1)$ le $M$ radici del polinomio $B(z)$:
+Siano $r_0, r_1, r_2$ ... $r_{N-1}$ le $N$ radici del polinomio $A(z)$ e $p_0, p_1, p_2$ ..... $p_{M-1}$ le $M$ radici del polinomio $B(z)$:
 
 $A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ... $(z - r_{N-1})$
 $B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ... $(z - p_{M-1})$
@@ -154,13 +154,13 @@ I poli di $H(z)$ sono i valori di $z$ per cui di $(z^D - K)$ si annulla, cioè p
 
 $z^D = K$
 
-Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui $D$ radici hanno lo stesso modulo $|K|^(-D)$, che è un numero minore di 1 solo se e solo se $|K|<1$: ciò significa che il nostro echo è stabile se e solo se $|K|<1$.
+Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui $D$ radici hanno lo stesso modulo $|K|^{-D}$, che è un numero minore di 1 solo se e solo se $|K|<1$: ciò significa che il nostro echo è stabile se e solo se $|K|<1$.
 
 
-##### Cosa ne facciamo di $H(z)$? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
+##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
 Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare, ad esempio, la risposta dell'echo ad un ingresso impulsivo.
 
 
 
-##### Cosa ne facciamo di $H(z)$? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
+##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
 Sempre con l'ausilio di Mathworks possiamo visualizzare la risposta in frequenza dell'echo.
