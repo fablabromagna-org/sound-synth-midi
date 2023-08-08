@@ -51,13 +51,16 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 
 Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample in uscita, con n = 0, 1, 2,... In quale relazione stanno le due sequenze? Per verificarlo senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito un modello matematico (Pierre-Simon Laplace, 1749-1827) che consente l'esame di sistemi di elaborazione lineari costituiti da moltiplicatori, sommatori e ritardi: la _trasformata Z_.
 
+![Laplace](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Pierre-Simon_Laplace.jpg/260px-Pierre-Simon_Laplace.jpg)
+
+
 
 #### Trasformiamo una serie di campioni in una funzione
 Per descrivere una successione di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" $δ(n)$_, così definita:
 
 **$δ(n)$ vale 1 per $n=0$ ; vale 0 per ogni altro valore di n**
 
-Vediamo ora che scrivendo δ(n-k) l'unico campione diverso da 0 passa nella posizione k; infatti:
+Se vogliamo spostare il campione unitario nella posizione k la funzione diventa $δ(n-k)$; infatti:
      
 **$δ(n-k)$ vale 1 per $n-k=0$ ossia per n=k ; vale 0 per ogni altro valore di n**
 
@@ -65,7 +68,7 @@ Vediamo ora che scrivendo δ(n-k) l'unico campione diverso da 0 passa nella posi
 <img width="400" src="/pi_pico_echo_stereo/media/z_2.jpg")
 </p>
 
-Utilizzando la funzione impulso unitario $δ(n-k)$ possiamo descrivere una qualsiasi sequenza di campioni con una funzione; data infatti la sequenza di campioni:
+Utilizzando la funzione impulso unitario $δ(n-k)$ possiamo descrivere una qualsiasi sequenza di campioni in forma di funzione; data infatti la sequenza di campioni:
 
 $x(0), x(1), x(2),$ ...
 
