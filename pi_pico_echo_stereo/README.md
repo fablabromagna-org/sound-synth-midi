@@ -53,7 +53,7 @@ Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample
 
 ![Laplace](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Pierre-Simon_Laplace.jpg/260px-Pierre-Simon_Laplace.jpg)
 
-_Ritratto di Pierre-Simon Laplace (1749-1827)_
+<sup>_Ritratto di Pierre-Simon Laplace (1749-1827)_</sup>
 
 
 #### Trasformiamo una serie di campioni in una funzione
