@@ -73,7 +73,7 @@ Utilizzando la funzione impulso unitario $δ(n-k)$ possiamo descrivere una quals
 
 $x(0), x(1), x(2),$ ...
 
-possiamo rappresentarla come funzione $x(n)$, costituita da una combinazione lineare di impulsi unitari via via ritardati :
+possiamo rappresentarla come funzione $x(n)$, costituita da una combinazione lineare di impulsi unitari via via ritardati:
 
 $x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...
 
@@ -124,7 +124,7 @@ $H(z) = C/(1 - Kz^{-D})$
 
 Infine scriviamo:
 
-$Y(z) = X(z) * H(z)$
+$Y(z) = X(z)H(z)$
 
 <p align="left">
 <img width="300" src="/pi_pico_echo_stereo/media/z_3.jpg")
@@ -167,5 +167,16 @@ Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti:
 Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare, ad esempio, la risposta dell'echo ad un ingresso impulsivo.
 
 
-#### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
-Sempre con l'ausilio di Mathworks possiamo visualizzare la risposta in frequenza dell'echo.
+#### Cosa ne facciamo di H(z)? La risposta del sistema ad un qualsiasi segnale
+E' importante notare che la risposta $Y(z)$ di un sistema con funzione di trasferimento discreta $H(z)$ ad un ingresso impulsivo $δ(n)$ la cui trasformata vale $1$ corrisponde a $H(z)$:
+
+$Y(z) = H(z)$
+
+Se ripartiamo dal dominio del tempo, la risposta del sistema all'impulso $δ(n)$ è una successione $y(n)$; possiamo quindi affermare che se di un sistema lineare discreto conosciamo la risposta $y(n)$ all'impulso $δ(n)$:
+
+$y(n) = y(0)δ(n) + y(1)δ(n-1) + y(2)δ(n-2) +$ ...
+
+allora ne conosciamo la funzione di trasferimento discreta $H(z)$:
+
+$H(z) = y(0)z^0 + y(1)z^{-1} + y(2)z^{-2} +$ ... $ \sum_{n=0}^∞ y(n)z^{-n}$
+
