@@ -57,7 +57,7 @@ Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample
 
 
 #### Trasformiamo una serie di campioni in una funzione
-Per descrivere una successione di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" $δ(n)$_, così definita:
+Per descrivere una successione di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario_ $δ(n)$, così definita:
 
 **$δ(n)$ vale 1 per $n=0$ ; vale 0 per ogni altro valore di n**
 
