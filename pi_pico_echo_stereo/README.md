@@ -180,6 +180,9 @@ allora ne conosciamo la funzione di trasferimento discreta $H(z)$:
 
 $H(z) = y(0)z^0 + y(1)z^{-1} + y(2)z^{-2} +$ ... $ \left(\sum_{n=0}^∞ y(n)z^{-n}\right)$
 
+ $\sum_{n=0}^{∞} n^2$ 
+
+
 $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
 
 $\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$
