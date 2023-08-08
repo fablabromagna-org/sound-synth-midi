@@ -155,7 +155,7 @@ I poli di $H(z)$ sono i valori di $z$ per cui di $(z^D - K)$ si annulla, cioè p
 
 $z^D = K$
 
-Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui $D$ radici hanno lo stesso modulo $|K|^{-D}$ ossia $\sqrt[D]{K}$, che è un numero minore di 1 solo se e solo se $|K|<1$: ciò significa che il nostro echo è stabile se e solo se $|K|<1$.
+Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui $D$ radici hanno lo stesso modulo $\sqrt[D]{|K|}$, che è un numero minore di 1 solo se e solo se $|K|<1$: ciò significa che il nostro echo è stabile se e solo se $|K|<1$.
 
 
 #### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
