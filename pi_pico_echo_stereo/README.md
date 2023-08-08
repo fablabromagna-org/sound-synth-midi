@@ -159,10 +159,12 @@ Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti:
 
 
 
-#### <ins>Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)</ins>
+#### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
+-----
 Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare, ad esempio, la risposta dell'echo ad un ingresso impulsivo.
 
 
 
-#### <ins>Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)</ins>
+#### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
+-----
 Sempre con l'ausilio di Mathworks possiamo visualizzare la risposta in frequenza dell'echo.
