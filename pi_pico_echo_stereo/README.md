@@ -178,20 +178,14 @@ $y(n) = y(0)δ(n) + y(1)δ(n-1) + y(2)δ(n-2) +$ ...
 
 allora ne conosciamo la funzione di trasferimento discreta $H(z)$:
 
-$H(z) = y(0)z^0 + y(1)z^{-1} + y(2)z^{-2} +$ ... $\sum_{n=0}^{∞} y(n)z^{-n}$
+$H(z) = y(0)z^0 + y(1)z^{-1} + y(2)z^{-2} +$ ... 
 
-$$\sum_{n=0}^{∞} n^2$$ 
+Se volessimo tuttavia riportare $H(z)$ nella forma $A(z)/B(z)$, dovremmo:
 
+1) dato l'esponente negativo in valore assoluto massimo $N$, moltiplicare numeratore e denominatore per $z^N$:
 
-$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
+$H(z) = (y(0)z^N + y(1)z^{N-1} + y(2)z^{N-2} +$ ... $+y(N)) / z^N$
 
-
-\sum\limits_{i=1}^{\infty}
-
-
-\displaystyle\sum\limits_{i=1}^{\infty}
-
-$\sum_{i=1}^n X_i$
 
 
 
