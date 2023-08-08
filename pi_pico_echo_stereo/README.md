@@ -191,5 +191,7 @@ $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \
 
 \displaystyle\sum\limits_{i=1}^{\infty}
 
+$\sum_{i=1}^n X_i$
+
 
 
