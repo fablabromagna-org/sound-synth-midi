@@ -38,7 +38,7 @@ $y(n) = Cx(n) + Ky(n-D)$
 
 La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da esso dipende la **stabilità** dell'algoritmo: per valori K > 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
 
-Il blocco delay è realizzato con un array di dimensione almeno pari a D+1; nel codice si usano due array, uno per canale, di dimensione 14000, in grado di memorizzare 14000 sample, pari a 14000\*25us=350ms; il valore massimo per D è quindi 13999 * 25us.
+Il blocco delay è realizzato con un array di dimensione almeno pari a D+1; nel codice si usano due array, uno per canale, di dimensione 14000, in grado di memorizzare 14000 sample, pari a 14000\*25us=350ms; il valore massimo per D è quindi 13999\*25us.
 
 
 #### Modellizzazione
@@ -49,11 +49,11 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 <img width="600" src="/pi_pico_echo_stereo/media/z_0.jpg")
 </p>
 
-Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc. In quale relazione stanno le due sequenze? Per verificarlo senza ricorre a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, definire un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stata definito un modello matematico (da Pierre-Simon Laplace, 1749-1827) che consente l'esame di sistemi di elaborazione lineari costituiti da moltiplicatori, sommatori e ritardi: la _trafsormata Z_.
+Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc. In quale relazione stanno le due sequenze? Per verificarlo senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito un modello matematico (Pierre-Simon Laplace, 1749-1827) che consente l'esame di sistemi di elaborazione lineari costituiti da moltiplicatori, sommatori e ritardi: la _trasformata Z_.
 
 
 ##### Trasformiamo una serie di campioni in una funzione
-Per descrive una successioni di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
+Per descrivere una successione di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
 
 **δ(n) vale 1 per n=0 ; vale 0 per ogni altro valore di n**
 
@@ -67,32 +67,32 @@ Vediamo ora che scrivendo δ(n-k) l'unico campione diverso da 0 passa nella posi
 
 Utilizzando la funzione impulso unitario δ(n-k) possiamo descrivere una qualsiasi sequenza di campioni con una funzione; data infatti la sequenza di campioni:
 
-$x(0), x(1), x(2),$ ......
+$x(0), x(1), x(2),$ ...
 
 possiamo rappresentarla come funzione x(n), costituita da una combinazione lineare di impulsi unitari via via ritardati :
 
-$x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ......
+$x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...
 
 ##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
 La trasformata Z altro non è che una semplice applicazione sulla successione x(n). Definiamo X(z) _trasformata Z di x(n)_ la funzione che si ottiene sostituendo δ(n-k) con $z^{-k}$; otteniamo:
 
-$X(z) = x(0)z^0 + x(1)z^{-1} + x(2)z^{-2} +$ ......
+$X(z) = x(0)z^0 + x(1)z^{-1} + x(2)z^{-2} +$ ...
 
 e ricordando che per qualsiasi valore z si ha $z^0 = 1$:
 
-$X(z) = x(0) + x(1)z^{-1} + x(2)z^{-2} +$ ......
+$X(z) = x(0) + x(1)z^{-1} + x(2)z^{-2} +$ ...
 
 Si noti che Δ(z), trasformata Z di δ(n), vale semplicemente 1; infatti in questo caso:
 
-$Δ(z) = 1 + 0z^{-1} + 0z^{-2} +$ ..... $= 1$
+$Δ(z) = 1 + 0z^{-1} + 0z^{-2} +$ ... $= 1$
 
 Infine, se consideriamo la generica successione r(n) ottenuta ritardando la serie y(n) di D campioni:
 
-$r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) +$ ...... $+ x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ...... $= x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ......
+$r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) +$ ... $+ x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ... $= x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ...
 
 Trasformando r(n), otteniamo:
 
-$R(z) = x(0)z^{n-D} + x(1)z^{n-D-1} + x(2)z^{n-D-2} +$ ...... $= z^{-D}(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...... $) = z^{-D}X(Z)$
+$R(z) = x(0)z^{n-D} + x(1)z^{n-D-1} + x(2)z^{n-D-2} +$ ... $= z^{-D}(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ... $) = z^{-D}X(Z)$
 
 Cioé: la trasformata Z di una successione x(n) ritardata di D campioni si ottiene moltiplicando X(z) per $z^{-D}$.
 
@@ -139,12 +139,12 @@ Siano A(z) e B(z) polinomi in z, di grado rispettivamente N e ed M:
 $A(z) = a_Nz^N + a_{N-1}z^{N-1} + a_{N-2}z^{N-2} +$ ..... $+ a_0$
 $B(z) = b_Mz^M + b_{M-1}z^{M-1} + b_{M-2}z^{M-2} +$ ..... $+ b_0$
 
-Siano $r_0, r_1, r_2$ ..... $r_(N-1)$ le N radici del polinomio A(z) e $p_0, p_1, p_2$ ..... $p_(M-1)$ le M radici del polinomio B(z):
+Siano $r_0, r_1, r_2$ ... $r_(N-1)$ le N radici del polinomio A(z) e $p_0, p_1, p_2$ ..... $p_(M-1)$ le M radici del polinomio B(z):
 
-$A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ...... $(z - r_{N-1})$
-$B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ...... $(z - p_{M-1})$
+$A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ... $(z - r_{N-1})$
+$B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ... $(z - p_{M-1})$
 
-Definiamo _poli_ della funzione H(z) gli M valori $p_0, p_1, p_2$ ..... $p_{M-1}$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento **instabile**, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente, il sistema ha un comportamento **stabile**.
+Definiamo _poli_ della funzione H(z) gli M valori $p_0, p_1, p_2$ ... $p_{M-1}$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta H(z), se H(z) presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento **instabile**, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente, il sistema ha un comportamento **stabile**.
 
 Scriviamo ora la funzione di trasferimento del nostro echo nella forma A(z)/B(z), moltiplicamndo numeratore e denominatore per $z^D$:
 
@@ -159,7 +159,6 @@ Si tratta di una particolare equazione di grado D in z (per approfondimenti: htt
 
 ##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
 Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare, ad esempio, la risposta dell'echo ad un ingresso impulsivo.
-
 
 
 
