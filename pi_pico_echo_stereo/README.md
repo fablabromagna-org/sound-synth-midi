@@ -178,7 +178,7 @@ $y(n) = y(0)δ(n) + y(1)δ(n-1) + y(2)δ(n-2) +$ ...
 
 allora ne conosciamo la funzione di trasferimento discreta $H(z)$:
 
-$H(z) = y(0)z^0 + y(1)z^{-1} + y(2)z^{-2} +$ ... $(\sum_{n=0})^∞ y(n)z^{-n}$
+$H(z) = y(0)z^0 + y(1)z^{-1} + y(2)z^{-2} +$ ... $\sum_{n=0}^{∞} y(n)z^{-n}$
 
 $$\sum_{n=0}^{∞} n^2$$ 
 
