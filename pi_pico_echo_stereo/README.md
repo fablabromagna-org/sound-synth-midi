@@ -1,6 +1,6 @@
 # Effetto echo realizzato con Raspberry Pi Pico 
 
-### Un esercizio per illustrare alcuni concetti dell'elaborazione audio real-time
+### _Un esercizio per illustrare alcuni concetti dell'elaborazione audio real-time lineare e una sua modellizzazione_
 
 Questo semplice dispositivo realizzato con un Raspberry Pi Pico ed una coppia di DAC I2S MAX98357A, è un effetto echo stereo (anche detto delay) con campionamento 12bit - 40Ksps (samples per second); non include alcuna regolazione esterna né filtri anti aliasing agli ingressi, perchè lo scopo è puramente didattico.
 
@@ -13,7 +13,7 @@ Nel video seguente una breve registrazione dell'effetto; all'ingresso è collega
 https://github.com/fablabromagna-org/sound-synth-midi/assets/41198542/2fde0d05-7ad2-4d5e-9d04-8c904a834ee6
 
 
-#### Schema a blocchi
+### Schema a blocchi
 
 Lo schema ingresso-uscita seguente illustra l'articolazione dell'effetto echo nei suoi componenti: il delay ed i blocchi sommatore e moltiplicatore , l'interconnessione tra gli stessi e la direzione del flusso di elaborazione.
 
@@ -41,7 +41,7 @@ La presenza dei parametri $C$ e $K$ è prima di tutto dovuta al fatto che la lun
 Il blocco delay è realizzato con un array di dimensione almeno pari a $D+1$; nel codice si usano due array, uno per canale, di dimensione 14000, in grado di memorizzare 14000 sample, pari a 14000\*25us=350ms; il valore massimo per D è quindi 13999\*25us.
 
 
-#### Modellizzazione
+### Modellizzazione
 
 L'algoritmo riceve in input una successione di valori (sample) misurati dell'ingresso e fornisce in output un'altra successione di valori:
 
@@ -52,7 +52,7 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample in uscita, con n = 0, 1, 2,... In quale relazione stanno le due sequenze? Per verificarlo senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito un modello matematico (Pierre-Simon Laplace, 1749-1827) che consente l'esame di sistemi di elaborazione lineari costituiti da moltiplicatori, sommatori e ritardi: la _trasformata Z_.
 
 
-##### Trasformiamo una serie di campioni in una funzione
+#### Trasformiamo una serie di campioni in una funzione
 Per descrivere una successione di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" $δ(n)$_, così definita:
 
 **$δ(n)$ vale 1 per $n=0$ ; vale 0 per ogni altro valore di n**
@@ -73,7 +73,7 @@ possiamo rappresentarla come funzione x(n), costituita da una combinazione linea
 
 $x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...
 
-##### Enunciamo la traformata Z ed applichiamola alla serie di campioni
+#### Enunciamo la traformata Z ed applichiamola alla serie di campioni
 La trasformata Z altro non è che una semplice applicazione sulla successione $x(n)$. Definiamo $X(z)$ _trasformata Z di x(n)_ la funzione che si ottiene sostituendo $δ(n-k)$ con $z^{-k}$; otteniamo:
 
 $X(z) = x(0)z^0 + x(1)z^{-1} + x(2)z^{-2} +$ ...
@@ -101,7 +101,7 @@ Infine, altra importante proprietà della trasformata Z: date due successioni, $
 $S(z) = X(z) + Y(z)$
 
 
-##### Calcoliamo la funzione di trasferimento Z del nostro echo
+#### Calcoliamo la funzione di trasferimento Z del nostro echo
 Abbiamo visto la relazione ingresso uscita dell'algoritmo per l'echo:
 
 $y(n) = Cx(n) + Ky(n-D)$
@@ -130,7 +130,7 @@ Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega in
 
 
 
-##### Cosa ne facciamo di H(z)? Condizioni per la stabilità
+#### Cosa ne facciamo di H(z)? Condizioni per la stabilità
 La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono **funzioni razionale fratte** in $z$, cioè esprimibili con un numeratore $A(z)$ ed un denominatore $B(z)$ che sono polinomi in $z$:
 
 $H(z) = A(z)/B(z)$
@@ -159,10 +159,10 @@ Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti:
 
 
 
-##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
+#### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
 Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare, ad esempio, la risposta dell'echo ad un ingresso impulsivo.
 
 
 
-##### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
+#### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
 Sempre con l'ausilio di Mathworks possiamo visualizzare la risposta in frequenza dell'echo.
