@@ -73,12 +73,12 @@ Utilizzando la funzione impulso unitario $δ(n-k)$ possiamo descrivere una quals
 
 $x(0), x(1), x(2),$ ...
 
-possiamo rappresentarla come funzione x(n), costituita da una combinazione lineare di impulsi unitari via via ritardati :
+possiamo rappresentarla come funzione $x(n)$, costituita da una combinazione lineare di impulsi unitari via via ritardati :
 
 $x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...
 
 #### Enunciamo la traformata Z ed applichiamola alla serie di campioni
-La trasformata Z altro non è che una semplice applicazione sulla successione $x(n)$. Definiamo $X(z)$ _trasformata Z di x(n)_ la funzione che si ottiene sostituendo $δ(n-k)$ con $z^{-k}$; otteniamo:
+La trasformata Z altro non è che una semplice applicazione sulla successione $x(n)$. Definiamo $X(z)$ _trasformata Z di $x(n)$_ la funzione che si ottiene sostituendo $δ(n-k)$ con $z^{-k}$:
 
 $X(z) = x(0)z^0 + x(1)z^{-1} + x(2)z^{-2} +$ ...
 
