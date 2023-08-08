@@ -49,7 +49,7 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 <img width="600" src="/pi_pico_echo_stereo/media/z_0.jpg")
 </p>
 
-Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample in uscita, con n = 0, 1, 2,... In quale relazione stanno le due sequenze? Per verificarlo senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito da _Laplace_ un metodo modello matematico che agevola lo studio di sistemi di elaborazione lineari (cioè costituiti da moltiplicatori per costanti, sommatori e ritardi) a tempo disceto: la _trasformata Z_.
+Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample in uscita, con $n = 0, 1, 2,$... In quale relazione stanno le due sequenze? Quale la risposta in frequenza? Cosa accade modificando i parametri C e D? Per rispondere senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito da _Laplace_ un metodo modello matematico che agevola lo studio di sistemi di elaborazione lineari (cioè costituiti da moltiplicatori per costanti, sommatori e ritardi) a tempo disceto: la _trasformata Z_.
 
 ![Laplace](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Pierre-Simon_Laplace.jpg/260px-Pierre-Simon_Laplace.jpg)
 
@@ -59,11 +59,11 @@ Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample
 #### Trasformiamo una serie di campioni in una funzione
 Per descrivere una successione di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario_ $δ(n)$, così definita:
 
-**$δ(n)$ vale 1 per $n=0$ ; vale 0 per ogni altro valore di n**
+**$δ(n)$ vale $1$ per $n=0$ ; vale $0$ per ogni altro valore di $n$**
 
-Se vogliamo spostare il campione unitario nella posizione k la funzione diventa $δ(n-k)$; infatti:
+Se vogliamo spostare il campione unitario nella posizione $k$ la funzione diventa $δ(n-k)$; infatti:
      
-**$δ(n-k)$ vale 1 per $n-k=0$ ossia per n=k ; vale 0 per ogni altro valore di n**
+**$δ(n-k)$ vale $1$ per $n-k=0$ ossia per $n=k$ ; vale $0$ per ogni altro valore di $n$**
 
 <p align="left">
 <img width="400" src="/pi_pico_echo_stereo/media/z_2.jpg")
