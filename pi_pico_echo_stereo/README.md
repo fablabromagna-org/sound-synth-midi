@@ -28,17 +28,17 @@ Nel passaggio dallo schema a blocchi al codice occorre tener presente che il seg
 Nell'esercizio, il codice ha la totale responsabilità del rispetto del timing. La funzione "repeating_timer_callback", che viene chiamata via interrupt ogni 25us (tempo di campionamento), svolge la funzione di leggere (campionare) i due segnali in ingresso (utilizzando i convertitori AD interni alla scheda Raspberry Pi Pico), effettuare le elaborazioni audio richieste, infine inviare due campioni (sample) ai due convertitori DA esterni. 25us rappresenta il tempo concesso per effettuare l'elaborazione audio desiderata, e corrisponde ad una frequenza di campionamento pari a 40ksps.
 
 In termini di codice, lo schema a blocchi si traduce in una singola funzione lineare; infatti se:
-- D è il valore del ritardo (come numero di sample) introdotto dal blocco delay
-- x(n) il sample in ingresso all'istante n
-- y(n) il sample in uscita all'istante n
+- $D$ è il valore del ritardo (come numero di sample) introdotto dal blocco delay
+- $x(n)$ il sample in ingresso all'istante n
+- $y(n)$ il sample in uscita all'istante n
 
 dallo schema a blocchi risulta che:
 
 $y(n) = Cx(n) + Ky(n-D)$
 
-La presenza dei parametri C e K è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro K ha una ulteriore importante ricaduta, perchè da esso dipende la **stabilità** dell'algoritmo: per valori K > 1 il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
+La presenza dei parametri $C$ e $K$ è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro $K$ ha una ulteriore importante ricaduta, perchè da esso dipende la **stabilità** dell'algoritmo: per valori $K>1$ il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
 
-Il blocco delay è realizzato con un array di dimensione almeno pari a D+1; nel codice si usano due array, uno per canale, di dimensione 14000, in grado di memorizzare 14000 sample, pari a 14000\*25us=350ms; il valore massimo per D è quindi 13999\*25us.
+Il blocco delay è realizzato con un array di dimensione almeno pari a $D+1$; nel codice si usano due array, uno per canale, di dimensione 14000, in grado di memorizzare 14000 sample, pari a 14000\*25us=350ms; il valore massimo per D è quindi 13999\*25us.
 
 
 #### Modellizzazione
@@ -49,17 +49,17 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 <img width="600" src="/pi_pico_echo_stereo/media/z_0.jpg")
 </p>
 
-Chiamiamo x(n) la sequenza di sample in ingresso, y(n) la sequenza di sample in uscita, con n = 0, 1, 2, etc. In quale relazione stanno le due sequenze? Per verificarlo senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito un modello matematico (Pierre-Simon Laplace, 1749-1827) che consente l'esame di sistemi di elaborazione lineari costituiti da moltiplicatori, sommatori e ritardi: la _trasformata Z_.
+Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample in uscita, con n = 0, 1, 2,... In quale relazione stanno le due sequenze? Per verificarlo senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito un modello matematico (Pierre-Simon Laplace, 1749-1827) che consente l'esame di sistemi di elaborazione lineari costituiti da moltiplicatori, sommatori e ritardi: la _trasformata Z_.
 
 
 ##### Trasformiamo una serie di campioni in una funzione
 Per descrivere una successione di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario" δ(n)_, così definita:
 
-**δ(n) vale 1 per n=0 ; vale 0 per ogni altro valore di n**
+**$δ(n)$ vale 1 per $n=0$ ; vale 0 per ogni altro valore di n**
 
 Vediamo ora che scrivendo δ(n-k) l'unico campione diverso da 0 passa nella posizione k; infatti:
      
-**δ(n-k) vale 1 per n-k=0 ossia per n=k ; vale 0 per ogni altro valore di n**
+**$δ(n-k)$ vale 1 per $n-k=0$ ossia per n=k ; vale 0 per ogni altro valore di n**
 
 <p align="left">
 <img width="400" src="/pi_pico_echo_stereo/media/z_2.jpg")
