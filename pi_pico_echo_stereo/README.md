@@ -172,20 +172,6 @@ E' importante notare che la risposta $Y(z)$ di un sistema con funzione di trasfe
 
 $Y(z) = H(z)$
 
-Se ripartiamo dal dominio del tempo, la risposta del sistema all'impulso $δ(n)$ è una successione $y(n)$; possiamo quindi affermare che se di un sistema lineare discreto conosciamo la risposta $y(n)$ all'impulso $δ(n)$:
-
-$y(n) = y(0)δ(n) + y(1)δ(n-1) + y(2)δ(n-2) +$ ...
-
-allora ne conosciamo la funzione di trasferimento discreta $H(z)$:
-
-$H(z) = y(0)z^0 + y(1)z^{-1} + y(2)z^{-2} +$ ... 
-
-Se volessimo tuttavia riportare $H(z)$ nella forma $A(z)/B(z)$, dovremmo:
-
-1) dato l'esponente negativo in valore assoluto massimo $N$, moltiplicare numeratore e denominatore per $z^N$:
-
-$H(z) = (y(0)z^N + y(1)z^{N-1} + y(2)z^{N-2} +$ ... $+y(N)) / z^N$
-
 
 
 
