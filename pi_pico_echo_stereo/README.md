@@ -181,3 +181,12 @@ Aumentando il valore del ritardo $D$ introdotto dal delay, la risposta in freque
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_4.jpg")
 </p>
+
+
+Possiamo poi sperimentare cosa accade se $K<0$, quindi:
+
+$C = 0.5$, $K = -0.8$, $D = 30$
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_6.jpg")
+</p>
