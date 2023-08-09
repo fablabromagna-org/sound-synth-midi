@@ -120,7 +120,7 @@ $Y(z) = X(z) * C/(1 - Kz^{-D})$
 
 Definiamo il secondo termine di questa moltiplicazione **funzione di trasferimento H(z)** del nostro echo:
 
-$H(z) = C/(1 - Kz^{-D})$
+$H(z) = C/(1 - Kz^{-D}) = Cz^D/(z^D - K)$
 
 Infine scriviamo:
 
@@ -152,25 +152,32 @@ $B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ... $(z - p_{M-1})$
 
 Definiamo **_poli_** della funzione $H(z)$ gli $M$ valori $p_0, p_1, p_2$ ... $p_{M-1}$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta $H(z)$, se $H(z)$ presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento **instabile**, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente, il sistema ha un comportamento **stabile**.
 
-Scriviamo ora la funzione di trasferimento del nostro echo nella forma $A(z)/B(z)$, moltiplicamndo numeratore e denominatore per $z^D$:
+Riprendiamo ora la funzione di trasferimento del $H(z)$ nostro echo:
 
 $H(z) = Cz^D/(z^D - K)$
 
-I poli di $H(z)$ sono i valori di $z$ per cui di $(z^D - K)$ si annulla, cioè per cui vale:
+i cui poli sono i valori di $z$ per cui di $(z^D - K)$ si annulla, cioè per cui vale:
 
 $z^D = K$
 
 Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui $D$ radici hanno lo stesso modulo $\sqrt[D]{|K|}$, che è un numero minore di 1 solo se e solo se $|K|<1$: ciò significa che il nostro echo è stabile se e solo se $|K|<1$.
 
 
-#### Cosa ne facciamo di H(z)? Studio della risposta ad un segnale di ingresso (INCOMPLETO)
-Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare, ad esempio, la risposta dell'echo ad un ingresso impulsivo.
+#### Cosa ne facciamo di H(z)? Studio della risposta in frequenza (INCOMPLETO)
+Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare la _risposta in frequenza_ del nostro echo.
+
+Utilizzando il seguente set di valori:
+
+$C = 0.5$, $K = 0.8$, $D = 30$
+
+risulta:
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_4.jpg")
+</p>
 
 
-#### Cosa ne facciamo di H(z)? La risposta del sistema ad un qualsiasi segnale
-E' importante notare che la risposta $Y(z)$ di un sistema con funzione di trasferimento discreta $H(z)$ ad un ingresso impulsivo $δ(n)$ la cui trasformata vale $1$ corrisponde a $H(z)$:
-
-$Y(z) = H(z)$
+#### Cosa ne facciamo di H(z)? La risposta del sistema ad un qualsiasi segnale (INCOMPLETO)
 
 
 
