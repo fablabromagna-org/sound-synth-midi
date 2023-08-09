@@ -183,10 +183,16 @@ Aumentando il valore del ritardo $D$ introdotto dal delay, la risposta in freque
 </p>
 
 
-Possiamo poi sperimentare cosa accade se $K<0$, quindi:
+Possiamo poi sperimentare cosa accade se $K<0$; se quindi:
 
 $C = 0.5$, $K = -0.8$, $D = 30$
+
+otteniammo la seguente risposta in frequenza
 
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_6.jpg")
 </p>
+
+
+#### Cosa ne facciamo di H(z)? Studio della risposta all'impulso [INCOMPLETO]
+Se l'analisi nel dominio delle frequenze fornisce informazioni sulla timbrica, l'analisi nel dominio dei tempi, ottenuto applicando all'ingresso un impulso, fornisce informazioni forse più utili, trattandosi di un effetto cui si richiede uno spostamento degli eventi rispetto al tempo.
