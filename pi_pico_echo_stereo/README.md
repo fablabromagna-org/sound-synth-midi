@@ -181,10 +181,3 @@ Aumentando il valore del ritardo $D$ introdotto dal delay, la risposta in freque
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_4.jpg")
 </p>
-
-
-#### Cosa ne facciamo di H(z)? La risposta del sistema ad un qualsiasi segnale (INCOMPLETO)
-
-
-
-
