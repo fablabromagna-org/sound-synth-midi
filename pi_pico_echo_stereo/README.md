@@ -199,7 +199,7 @@ $T_0/2 = 750us$
 
 $T_0 = 1500us$
 
-$F_0 = 1/(T_0) \simeq 666Hz$
+$F_0 = 1/T_0 \simeq 666Hz$
 
 
 #### Cosa ne facciamo di H(z)? Studio della risposta all'impulso [INCOMPLETO]
