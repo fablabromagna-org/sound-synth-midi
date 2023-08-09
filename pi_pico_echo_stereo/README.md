@@ -195,4 +195,4 @@ otteniammo la seguente risposta in frequenza
 
 
 #### Cosa ne facciamo di H(z)? Studio della risposta all'impulso [INCOMPLETO]
-Se l'analisi nel dominio delle frequenze fornisce informazioni sulla timbrica, l'analisi nel dominio dei tempi, ottenuto applicando all'ingresso un impulso, fornisce informazioni forse più utili, trattandosi di un effetto cui si richiede uno spostamento degli eventi rispetto al tempo.
+Se l'analisi nel dominio delle frequenze fornisce informazioni sulla timbrica, l'analisi nel dominio dei tempi, in cui si confronta il segnale di ingresso col segnale in uscita, fornisce informazioni forse più utili sull'echo, trattandosi di un effetto cui si richiede fondamentalmente la moltiplicazione nel tempo di singoli eventi.
