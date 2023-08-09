@@ -163,14 +163,20 @@ $z^D = K$
 Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui $D$ radici hanno lo stesso modulo $\sqrt[D]{|K|}$, che è un numero minore di 1 solo se e solo se $|K|<1$: ciò significa che il nostro echo è stabile se e solo se $|K|<1$.
 
 
-#### Cosa ne facciamo di H(z)? Studio della risposta in frequenza (INCOMPLETO)
+#### Cosa ne facciamo di H(z)? Studio della risposta in frequenza
 Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare la _risposta in frequenza_ del nostro echo.
 
 Utilizzando il seguente set di valori:
 
-$C = 0.5$, $K = 0.8$, $D = 30$
+$C = 0.5$, $K = 0.8$, $D = 10$
 
 risulta:
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_5.jpg")
+</p>
+
+Aumentando il valore del ritardo $D$ introdotto dal delay, la risposta in frequenza diventa via via più movimentata; se ad esempio scegliamo $D = 30$:
 
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_4.jpg")
