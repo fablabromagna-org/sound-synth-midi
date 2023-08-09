@@ -173,13 +173,13 @@ $C = 0.5$, $K = 0.8$, $D = 10$
 risulta:
 
 <p align="left">
-<img width="500" src="/pi_pico_echo_stereo/media/z_5.jpg")
+<img width="500" src="/pi_pico_echo_stereo/media/z_4.jpg")
 </p>
 
 Aumentando il valore del ritardo $D$ introdotto dal delay, la risposta in frequenza diventa via via più movimentata; se ad esempio scegliamo $D = 30$:
 
 <p align="left">
-<img width="500" src="/pi_pico_echo_stereo/media/z_4.jpg")
+<img width="500" src="/pi_pico_echo_stereo/media/z_5.jpg")
 </p>
 
 
@@ -192,6 +192,14 @@ otteniammo la seguente risposta in frequenza
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_6.jpg")
 </p>
+
+Si noti come l'inversione di fase dell'uscita (dovuta a $K<0$) riduca in modo sensibile tutta la parte bassa dello spettro, fino a che il ritardo di $30*25us = 750us$ non corrisponde a metà del periodo:
+
+$T_0/2 = 750us$
+
+$T_0 = 2*750us$
+
+$F_0 \simeq 666Hz$
 
 
 #### Cosa ne facciamo di H(z)? Studio della risposta all'impulso [INCOMPLETO]
