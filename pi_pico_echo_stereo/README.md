@@ -164,9 +164,27 @@ Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti:
 
 
 #### Cosa ne facciamo di H(z)? Studio della risposta in frequenza
-Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare la _risposta in frequenza_ del nostro echo.
+Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare la _risposta in frequenza_ del nostro echo. Nell'ambiente Mathworks, questa la descrizione della funzione di trasferimento $H(z)$
 
-Utilizzando il seguente set di valori:
+```
+C = 0.5;
+K = -0.8;
+// D = 30;
+
+%la funzione di trasferimento razionale è descritta nella forma b/c
+%dove il numeratore b = b0 + b1z^-1 + b2z^-2 + b3z^-3 .....
+%e il denominatore a = a0 + a1z^-1 + a2z^-2 + a3z^-3 .....
+
+% a, b vengono descritti tramite vettori, in cui si inseriscono i soli coefficienti b_k e a_k
+b = C;
+a = [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 - K];
+
+% Frequency response
+[h,w] = freqz(b,a,1000); % 1000 points of evaluation
+
+```
+
+Come si legge qui sopra, è stato impiegato il seguente set di valori:
 
 $C = 0.5$, $K = 0.8$, $D = 10$
 
