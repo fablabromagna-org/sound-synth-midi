@@ -190,10 +190,10 @@ Le successive istruzioni consentono la visualizzazione della risposta in frequen
 % Il passaggio al dominio delle frequenze avviene con la sostituzione seguente:
 % z --> e^(jῶ)
 % dove ῶ è la pulsazione normalizzata al tempo di campionamento T; detta F la frequenza di campionamento:
-% ῶ = 2π/(t/T) = 2π*f/F
+% ῶ = 2π/(t/T) = 2πf/F
 % 
 % quindi anche:
-% f = (ῶ*F)/2π
+% f = (ῶF)/2π
 % 
 % i valori estremi sono:
 % ῶ = 0 <--> f = 0
