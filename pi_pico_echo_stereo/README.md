@@ -178,7 +178,6 @@ K = -0.8;
 % a, b vengono descritti tramite vettori, in cui si inseriscono i soli coefficienti b_k e a_k
 b = C;
 a = [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 - K];
-
 ```
 
 Le successive istruzioni consentono la visualizzazione della risposta in frequenza:
@@ -206,7 +205,6 @@ ax.YLim = [-20 20];
 ax.XTick = 0:5:20; % primo elemento: incremento : ultimo elemento (primo ed ultimo entro il dominio del grafico)
 xlabel('kHz');
 ylabel('Magnitude (dB)');
-
 ```
 
 
