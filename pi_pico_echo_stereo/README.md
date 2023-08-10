@@ -210,11 +210,11 @@ ylabel('Magnitude (dB)');
 ```
 
 
-Come si legge qui sopra, è stato quindi impiegato il seguente set di valori:
+Quindi, col set di valori:
 
 $C = 0.5$, $K = 0.8$, $D = 10$
 
-Risulta il seguente andamento:
+risulta il seguente andamento della risposta in frequenza:
 
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_4.jpg")
