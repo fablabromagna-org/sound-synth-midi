@@ -32,7 +32,13 @@ In termini di codice, lo schema a blocchi si traduce in una singola funzione lin
 - $x(n)$ il sample in ingresso all'istante n
 - $y(n)$ il sample in uscita all'istante n
 
-dallo schema a blocchi risulta che:
+allora il sample che possiamo leggere in uscita dal delay è $y(n-D)$:
+
+<p align="left">
+<img width="400" src="/pi_pico_echo_stereo/media/z_12.jpg")
+</p>
+
+All'uscita del blocco sommatore risulta quindi:
 
 (1) $y(n) = Cx(n) + Ky(n-D)$
 
@@ -305,7 +311,7 @@ Nel campionamento, a $t$ sostituiamo $nT_0$ ossia $n/F_0$; analogamente ad $u(t)
 
 Il nostro ingresso di prova, nel tempo discreto, è quindi:
 
-(28) $x(n) = u(n)*sin(2\pi nf/F_0)$
+(28) $x(n) = u(n)sin(2\pi nf/F_0)$
 
 Poi, ponendo
 
@@ -313,7 +319,7 @@ Poi, ponendo
 
 possiamo scrivere
 
-(30) $x(n) = u(n)*sin(ω_0n)$
+(30) $x(n) = u(n)sin(ω_0n)$
 
 Su https://it.wikipedia.org/wiki/Trasformata_zeta troviamo la relativa trasformata Z tra le trasformate "notevoli":
 
