@@ -319,11 +319,11 @@ Il nostro ingresso di prova, nel tempo discreto, è quindi:
 
 (28) $x(n) = u(n)sin(2\pi nf/F_0)$
 
-Poi, ponendo
+Poi, ponendo:
 
 (29) $ω_0 = 2\pi f/F_0$
 
-possiamo scrivere
+possiamo scrivere:
 
 (30) $x(n) = u(n)sin(ω_0n)$
 
