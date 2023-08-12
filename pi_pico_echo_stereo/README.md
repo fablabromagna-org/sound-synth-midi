@@ -34,7 +34,7 @@ In termini di codice, lo schema a blocchi si traduce in una singola funzione lin
 
 dallo schema a blocchi risulta che:
 
-$y(n) = Cx(n) + Ky(n-D)$
+(1) $y(n) = Cx(n) + Ky(n-D)$
 
 La presenza dei parametri $C$ e $K$ è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro $K$ ha una ulteriore importante ricaduta, perchè da esso dipende la **stabilità** dell'algoritmo: per valori $K>1$ il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
 
@@ -49,7 +49,7 @@ L'algoritmo riceve in input una successione di valori (sample) misurati dell'ing
 <img width="600" src="/pi_pico_echo_stereo/media/z_0.jpg")
 </p>
 
-Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample in uscita, con $n = 0, 1, 2,$... In quale relazione stanno le due sequenze? Quale la risposta in frequenza? Cosa accade modificando i parametri C e D? Per rispondere senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito da _Laplace_ un metodo modello matematico che agevola lo studio di sistemi di elaborazione lineari (cioè costituiti da moltiplicatori per costanti, sommatori e ritardi) a tempo disceto: la _trasformata Z_.
+Indichiamo con $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample in uscita, con $n = 0, 1, 2,$... In quale relazione stanno le due sequenze? Quale la risposta in frequenza? Cosa accade modificando i parametri C e D? Per rispondere senza ricorrere a modelli matematici occorre costruire materialmente il dispositivo, scriverne e compilarne il codice, realizzare un banco di prova con generatore di funzioni e oscilloscopio per la visualizzazione dei due segnali. In alternativa si crea un _modello matematico_, e lo si studia con simulazioni automatiche. Per le sequenze a tempo discreto, come sono le successioni regolari di campioni, è stato definito da _Laplace_ un metodo modello matematico che agevola lo studio di sistemi di elaborazione lineari (cioè costituiti da moltiplicatori per costanti, sommatori e ritardi) a tempo disceto: la _trasformata Z_.
 
 ![Laplace](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Pierre-Simon_Laplace.jpg/260px-Pierre-Simon_Laplace.jpg)
 
@@ -59,11 +59,11 @@ Chiamiamo $x(n)$ la sequenza di sample in ingresso, $y(n)$ la sequenza di sample
 #### Trasformiamo una serie di campioni in una funzione
 Per descrivere una successione di campioni in termini matematici, torna comodo esprimerla come una funzione; definiamo una particolare funzione discreta detta _impulso unitario_ $δ(n)$, così definita:
 
-**$δ(n)$ vale $1$ per $n=0$ ; vale $0$ per ogni altro valore di $n$**
+(2) **$δ(n)$ vale $1$ per $n=0$ ; vale $0$ per ogni altro valore di $n$**
 
 Se vogliamo spostare il campione unitario nella posizione $k$ la funzione diventa $δ(n-k)$; infatti:
      
-**$δ(n-k)$ vale $1$ per $n-k=0$ ossia per $n=k$ ; vale $0$ per ogni altro valore di $n$**
+(3) **$δ(n-k)$ vale $1$ per $n-k=0$ ossia per $n=k$ ; vale $0$ per ogni altro valore di $n$**
 
 <p align="left">
 <img width="400" src="/pi_pico_echo_stereo/media/z_2.jpg")
@@ -71,7 +71,7 @@ Se vogliamo spostare il campione unitario nella posizione $k$ la funzione divent
 
 Utilizzando la funzione impulso unitario $δ(n-k)$ possiamo descrivere una qualsiasi sequenza di campioni in forma di funzione; data infatti la sequenza di campioni:
 
-$x(0), x(1), x(2),$ ...
+(4) $x(0), x(1), x(2),$ ...
 
 possiamo rappresentarla come funzione $x(n)$, costituita da una combinazione lineare di impulsi unitari via via ritardati:
 
@@ -245,4 +245,50 @@ $F_0 = 1/T_0 \simeq 666Hz$
 
 
 #### Cosa ne facciamo di H(z)? Studio della risposta all'impulso [INCOMPLETO]
-Se l'analisi nel dominio delle frequenze fornisce informazioni sulla timbrica, l'analisi nel dominio dei tempi, in cui si confronta il segnale di ingresso col segnale in uscita, fornisce informazioni forse più utili sull'echo, trattandosi di un effetto cui si richiede fondamentalmente la moltiplicazione nel tempo di singoli eventi.
+Se l'analisi nel dominio delle frequenze fornisce informazioni sulla timbrica, l'analisi nel dominio dei tempi, in cui si confronta il segnale di ingresso col segnale in uscita, fornisce informazioni forse più utili sull'echo, trattandosi di un effetto cui si richiede fondamentalmente la moltiplicazione nel tempo di singoli eventi. Se:
+
+$C = 0.5$, $K = 0.8$, $D = 30$
+
+utilizzando le istruzioni seguenti:
+
+
+```
+C = 0.5;
+K = 0.8;
+D = 30;
+
+% funzione di trasferimento
+syms z
+H1 = (C*z^D)/(z^D-K);
+
+% ingresso
+in = 1; % impulso unitario
+
+% risposta nel dominio dei tempi
+out=iztrans(H1*in);
+Serie = subs(out,[sym("n")],0:300);
+p=plot(Serie);
+ax = gca;
+ax.XScale = 'linear';
+ax.YLim = [-1 1];
+ax.XTick = 0:50:300; % primo elemento: incremento : ultimo elemento (primo ed ultimo entro il dominio del grafico)
+xlabel('n')
+ylabel('value')
+```
+
+possiamo visualizzare la risposta all'impulso, come una successione di impulsi a distanza di 30 campioni:
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_7.jpg")
+</p>
+
+
+Con $K = - 0.8$ otteniamo la seguente risposta, dove ogni successivo impulso viene invertito di valore:
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_8.jpg")
+</p>
+
+
+
+
