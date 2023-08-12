@@ -158,7 +158,9 @@ Analogamente, siano $p_0, p_1, p_2$ ..... $p_{M-1}$ le $M$ radici del polinomio 
 
 (21) $B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ... $(z - p_{M-1})$
 
-Definiamo **_poli_** della funzione $H(z)$ gli $M$ valori $p_0, p_1, p_2$ ... $p_{M-1}$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta $H(z)$, se $H(z)$ presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento **instabile**, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente, il sistema ha un comportamento **stabile**.
+Definiamo **_poli_** della funzione $H(z)$ gli $M$ valori $p_0, p_1, p_2$ ... $p_{M-1}$; si dimostra che:
+
+**dato un sistema descritto dalla funzione di trasferimento discreta $H(z)$, se $H(z)$ presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento _instabile_, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente, il sistema ha un comportamento _stabile_**.
 
 Riprendiamo ora la funzione di trasferimento del $H(z)$ nostro echo:
 
@@ -302,6 +304,10 @@ Con $K = - 0.8$ otteniamo la seguente risposta, dove ogni successivo impulso vie
 Facciamo un passo avanti con un segnale in ingresso sinusoidale con frequenza $f$. Innanzitutto ci serve la trasformata Z del segnale $sin(ωt)$ con $ω=2\pi f$, utilizzando la nostra frequenza di campionamento $F_0$; poi, visto che ci interessa inviare il segnale sinusoidale a partire da $t=0$, azzeriamo la sinusoide per $t<0$ moltiplicandola per una funzione detta **gradino unitario** $u(t)$ così definita:
 
 (26) **$u(t)$ vale $0$ per $t<0$ ; vale $1$ per $t>=0$**
+
+<p align="left">
+<img width="400" src="/pi_pico_echo_stereo/media/z_12.jpg")
+</p>
 
 Il nostro ingresso di prova, nel tempo continuo, è quindi:
 
