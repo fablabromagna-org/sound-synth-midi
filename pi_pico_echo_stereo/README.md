@@ -162,7 +162,7 @@ Definiamo **_poli_** della funzione $H(z)$ gli $M$ valori $p_0, p_1, p_2$ ... $p
 
 **dato un sistema descritto dalla funzione di trasferimento discreta $H(z)$, se $H(z)$ presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento _instabile_, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente, il sistema ha un comportamento _stabile_**.
 
-Riprendiamo ora la funzione di trasferimento del $H(z)$ nostro echo:
+Riprendiamo ora la funzione di trasferimento $H(z)$ del nostro echo:
 
 (22) $H(z) = Cz^D/(z^D - K)$
 
