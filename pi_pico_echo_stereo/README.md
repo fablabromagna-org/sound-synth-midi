@@ -301,7 +301,7 @@ Con $K = - 0.8$ otteniamo la seguente risposta, dove ogni successivo impulso vie
 
 #### Cosa ne facciamo di H(z)? Studio della risposta ad una sinusoide
 
-Facciamo un passo avanti con un segnale in ingresso sinusoidale con frequenza $f$. Innanzitutto ci serve la trasformata Z del segnale $sin(ωt)$ con $ω=2\pi f$, utilizzando la nostra frequenza di campionamento $F_0$; poi, visto che ci interessa inviare il segnale sinusoidale a partire da $t=0$, azzeriamo la sinusoide per $t<0$ moltiplicandola per una funzione detta **gradino unitario** $u(t)$ così definita:
+Vediamo ora come calcolare l'uscita dell'echo applicando in ingresso un segnale sinusoidale. Partiamo dalla funzione $sin(ωt)$ con $ω=2\pi f$, dove $f$ è la frequenza; poi, visto che ci interessa inviare il segnale sinusoidale a partire da $t=0$, azzeriamo la sinusoide per $t<0$ moltiplicandola per una funzione detta **gradino unitario** $u(t)$ così definita:
 
 (26) **$u(t)$ vale $0$ per $t<0$ ; vale $1$ per $t>=0$**
 
@@ -313,7 +313,7 @@ Il nostro ingresso di prova, nel tempo continuo, è quindi:
 
 (27) $x(t) = u(t)*sin(2\pi ft)$
 
-Nel campionamento, a $t$ sostituiamo $nT_0$ ossia $n/F_0$; analogamente ad $u(t)$ sostituiamo $u(nT_0)$ che possiamo a sua volta scrivere $u(n)$ (il valore della funzione campionata è comunque pari ad $1$ per $n>=0$)
+Nel campionamento, che ricordiamo avviene con periodo $T_0$ e frequenza $F_0 = 1/T_0$, leggiamo campioni del segnale d'ingresso agli istanti $0$, $T_0$, $2T_0$, ... Quindi a $t$ sostituiamo $nT_0$ ossia $n/F_0$; analogamente ad $u(t)$ sostituiamo $u(nT_0)$ che possiamo anche scrivere $u(n)$ (il valore della funzione campionata vale comunque $1$)
 
 Il nostro ingresso di prova, nel tempo discreto, è quindi:
 
@@ -326,6 +326,12 @@ Poi, ponendo
 possiamo scrivere
 
 (30) $x(n) = u(n)sin(ω_0n)$
+
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_14.jpg")
+</p>
+
 
 Su https://it.wikipedia.org/wiki/Trasformata_zeta troviamo la relativa trasformata Z tra le trasformate "notevoli":
 
