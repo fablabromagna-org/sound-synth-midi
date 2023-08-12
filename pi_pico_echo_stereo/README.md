@@ -75,56 +75,56 @@ Utilizzando la funzione impulso unitario $δ(n-k)$ possiamo descrivere una quals
 
 possiamo rappresentarla come funzione $x(n)$, costituita da una combinazione lineare di impulsi unitari via via ritardati:
 
-$x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...
+(5) $x(n) = x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ...
 
 #### Enunciamo la traformata Z ed applichiamola alla serie di campioni
 La trasformata Z altro non è che una semplice applicazione sulla successione $x(n)$. Definiamo $X(z)$ _trasformata Z di $x(n)$_ la funzione che si ottiene sostituendo $δ(n-k)$ con $z^{-k}$:
 
-$X(z) = x(0)z^0 + x(1)z^{-1} + x(2)z^{-2} +$ ...
+(6) $X(z) = x(0)z^0 + x(1)z^{-1} + x(2)z^{-2} +$ ...
 
 e ricordando che per qualsiasi valore $z$ si ha $z^0 = 1$:
 
-$X(z) = x(0) + x(1)z^{-1} + x(2)z^{-2} +$ ...
+(7) $X(z) = x(0) + x(1)z^{-1} + x(2)z^{-2} +$ ...
 
 Si noti che $Δ(z)$, trasformata Z di $δ(n)$, vale semplicemente 1; infatti in questo caso:
 
-$Δ(z) = 1 + 0z^{-1} + 0z^{-2} +$ ... $= 1$
+(8) $Δ(z) = 1 + 0z^{-1} + 0z^{-2} +$ ... $= 1$
 
 Infine, se consideriamo la generica successione $r(n)$ ottenuta ritardando la serie $y(n)$ di $D$ campioni:
 
-$r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) +$ ... $+ x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ... $= x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ...
+(9) $r(n) = 0δ(n) + 0δ(n-1) + 0δ(n-2) +$ ... $+ x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ... $= x(0)δ(n-D) + x(1)δ(n-D-1) + x(2)δ(n-D-2) +$ ...
 
 Trasformando $r(n)$, otteniamo:
 
-$R(z) = x(0)z^{n-D} + x(1)z^{n-D-1} + x(2)z^{n-D-2} +$ ... $= z^{-D}(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ... $) = z^{-D}X(Z)$
+(10) $R(z) = x(0)z^{n-D} + x(1)z^{n-D-1} + x(2)z^{n-D-2} +$ ... $= z^{-D}(x(0)δ(n) + x(1)δ(n-1) + x(2)δ(n-2) +$ ... $) = z^{-D}X(Z)$
 
 Cioé: la trasformata Z di una successione $x(n)$ ritardata di $D$ campioni si ottiene moltiplicando $X(z)$ per $z^{-D}$.
 
 Infine, altra importante proprietà della trasformata Z: date due successioni, $x(n)$ ed $y(n)$ e la successione somma $s(n)=x(n)+y(n)$, la trasformata Z di $s(n)$ vale:
 
-$S(z) = X(z) + Y(z)$
+(11) $S(z) = X(z) + Y(z)$
 
 
 #### Calcoliamo la funzione di trasferimento Z del nostro echo
 Abbiamo visto la relazione ingresso uscita dell'algoritmo per l'echo:
 
-$y(n) = Cx(n) + Ky(n-D)$
+(12) $y(n) = Cx(n) + Ky(n-D)$
 
 che rappresenta un'uguaglianza tra due successioni; applicando la trasformata Z ad entrambi i membri otteniamo:
 
-$Y(z) = CX(z) + Kz^{-D}Y(z)$
+(13) $Y(z) = CX(z) + Kz^{-D}Y(z)$
 
 da cui:
 
-$Y(z) = X(z) * C/(1 - Kz^{-D})$
+(14) $Y(z) = X(z) * C/(1 - Kz^{-D})$
 
 Definiamo il secondo termine di questa moltiplicazione **funzione di trasferimento H(z)** del nostro echo:
 
-$H(z) = C/(1 - Kz^{-D}) = Cz^D/(z^D - K)$
+(15) $H(z) = C/(1 - Kz^{-D}) = Cz^D/(z^D - K)$
 
 Infine scriviamo:
 
-$Y(z) = X(z)H(z)$
+(16) $Y(z) = X(z)H(z)$
 
 <p align="left">
 <img width="300" src="/pi_pico_echo_stereo/media/z_3.jpg")
@@ -137,28 +137,30 @@ Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega in
 #### Cosa ne facciamo di H(z)? Condizioni per la stabilità
 La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono **funzioni razionale fratte** in $z$, cioè esprimibili con un numeratore $A(z)$ ed un denominatore $B(z)$ che sono polinomi in $z$:
 
-$H(z) = A(z)/B(z)$
+(17) $H(z) = A(z)/B(z)$
 
 Siano $A(z)$ e $B(z)$ polinomi di grado rispettivamente $N$ e ed $M$:
 
-$A(z) = a_Nz^N + a_{N-1}z^{N-1} + a_{N-2}z^{N-2} +$ ..... $+ a_0$
-$B(z) = b_Mz^M + b_{M-1}z^{M-1} + b_{M-2}z^{M-2} +$ ..... $+ b_0$
+(18) $A(z) = a_Nz^N + a_{N-1}z^{N-1} + a_{N-2}z^{N-2} +$ ..... $+ a_0$
+(19) $B(z) = b_Mz^M + b_{M-1}z^{M-1} + b_{M-2}z^{M-2} +$ ..... $+ b_0$
 
 Siano $r_0, r_1, r_2$ ... $r_{N-1}$ le $N$ radici del polinomio $A(z)$; possiamo scrivere:
-$A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ... $(z - r_{N-1})$
+
+(20) $A(z) = a_N(z - r_0)(z - r_1)(z - r_2)$ ... $(z - r_{N-1})$
 
 Analogamente, siano $p_0, p_1, p_2$ ..... $p_{M-1}$ le $M$ radici del polinomio $B(z)$; scriviamo:
-$B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ... $(z - p_{M-1})$
+
+(21) $B(z) = b_M(z - p_0)(z - p_1)(z - p_2)$ ... $(z - p_{M-1})$
 
 Definiamo **_poli_** della funzione $H(z)$ gli $M$ valori $p_0, p_1, p_2$ ... $p_{M-1}$; si dimostra che, dato un algoritmo/sistema descritto dalla funzione di trasferimento discreta $H(z)$, se $H(z)$ presenta almeno un polo di valore assoluto maggiore o uguale ad 1, allora il sistema ha un comportamento **instabile**, ossia la sua uscita diverge o oscilla indipendentemente dall'ingresso; diversamente, il sistema ha un comportamento **stabile**.
 
 Riprendiamo ora la funzione di trasferimento del $H(z)$ nostro echo:
 
-$H(z) = Cz^D/(z^D - K)$
+(22) $H(z) = Cz^D/(z^D - K)$
 
 i cui poli sono i valori di $z$ per cui di $(z^D - K)$ si annulla, cioè per cui vale:
 
-$z^D = K$
+(23) $z^D = K$
 
 Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui $D$ radici hanno lo stesso modulo $\sqrt[D]{|K|}$, che è un numero minore di 1 solo se e solo se $|K|<1$: ciò significa che il nostro echo è stabile se e solo se $|K|<1$.
 
@@ -288,7 +290,3 @@ Con $K = - 0.8$ otteniamo la seguente risposta, dove ogni successivo impulso vie
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_8.jpg")
 </p>
-
-
-
-
