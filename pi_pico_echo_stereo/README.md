@@ -299,17 +299,17 @@ Facciamo un passo avanti con un segnale in ingresso sinusoidale con frequenza $f
 
 Il nostro ingresso di prova, nel tempo continuo, è quindi:
 
-(27) $x(t) = u(t)*sin(2\pi*f*t)$
+(27) $x(t) = u(t)*sin(2\pi ft)$
 
 Nel campionamento, a $t$ sostituiamo $nT_0$ ossia $n/F_0$; analogamente ad $u(t)$ sostituiamo $u(nT_0)$ che possiamo a sua volta scrivere $u(n)$ (il valore della funzione campionata è comunque pari ad $1$ per $n>=0$)
 
 Il nostro ingresso di prova, nel tempo discreto, è quindi:
 
-(28) $x(n) = u(n)*sin(2\p in f/F_0)$
+(28) $x(n) = u(n)*sin(2\pi nf/F_0)$
 
 Poi, ponendo
 
-(29) $ω_0 = 2\pif/F_0$
+(29) $ω_0 = 2\pi f/F_0$
 
 possiamo scrivere
 
@@ -321,7 +321,7 @@ Su https://it.wikipedia.org/wiki/Trasformata_zeta troviamo la relativa trasforma
 <img width="300" src="/pi_pico_echo_stereo/media/z_9.jpg")
 </p>
 
-Vediamo finalmente l'andamento dell'uscita per, ad esempio, $f=5000Hz$; su Mathworks, usando il codice seguente:
+Vediamo finalmente l'andamento dell'uscita per, ad esempio, $f = 5000Hz$; su Mathworks, usando il codice seguente:
 
 ```
 omega0 = 2*pi*5000/40000; % 2pi*f/F
@@ -347,7 +347,7 @@ Si ottiene questo risultato:
 <img width="500" src="/pi_pico_echo_stereo/media/z_10.jpg")
 </p>
 
-Proviamo infine a rendere ora l'echo instabile, ponendo $K=1.05$; otteniamo questo andamento divergente dell'uscita dell'echo:
+Proviamo infine a rendere ora l'echo instabile, ponendo $K = 1.05$; otteniamo questo andamento divergente dell'uscita dell'echo:
 
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_11.jpg")
