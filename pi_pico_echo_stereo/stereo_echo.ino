@@ -17,7 +17,7 @@ Single-Supply Operation (2.5V to 5.5V)
 
 
 // Sandro Grassia
-// "simple_stereo_echo.ino"
+// "stereo_echo.ino"
 // Arduino IDE rel. 2.1.1
 // board "Raspberry Pi Pico"
 // 2 x DAC MAX98357A
