@@ -289,3 +289,64 @@ Con $K = - 0.8$ otteniamo la seguente risposta, dove ogni successivo impulso vie
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_8.jpg")
 </p>
+
+Facciamo un passo avanti con un segnale in ingresso sinusoidale con frequenza $f$. Innanzitutto ci serve la trasformata Z del segnale $sin(ωt)$ con $ω=2pi*f$, utilizzando la nostra frequenza di campionamento $F_0$; poi, visto che ci interessa inviare il segnale sinusoidale a partire da $t=0$, azzeriamo la sinusoide per $t<0$ moltiplicandola per una funzione detta **gradino unitario** $u(t)$ così definita:
+
+(26) **$u(t)$ vale $0$ per $t<0$ ; vale $1$ per $t>=0$**
+
+Il nostro ingresso di prova, nel tempo continuo, è quindi:
+
+(27) $x(t) = u(t)*sin(2pi*f*t)$
+
+Nel campionamento, a $t$ sostituiamo $n*T_0$ ossia $n/F_0$; analogamente ad $u(t)$ sostituiamo $u(n*T_0)$ che possiamo a sua volta scrivere $u(n)$ (il valore della funzione campionata è comunque pari ad $1$ per $n>=0$)
+
+Il nostro ingresso di prova, nel tempo discreto, è quindi:
+
+(28) $x(n) = u(n)*sin(2pi*n*f/F_0)$
+
+Poi, ponendo
+
+(29) $ω_0 = 2pi*f/F_0$
+
+possiamo scrivere
+
+(30) $x(n) = u(n)*sin(ω_0n)$
+
+> Su https://it.wikipedia.org/wiki/Trasformata_zeta troviamo la trasformata Z relativa:
+
+<p align="left">
+<img width="300" src="/pi_pico_echo_stereo/media/z_9.jpg")
+</p>
+
+Vediamo finalmente l'andamento dell'uscita per, ad esempio, $f=5000Hz$; su Mathworks, usando il codice seguente:
+
+```
+omega0 = 2*pi*5000/40000; % 2pi*f/F
+syms z
+
+H1 = (C*z^D)/(z^D-K);
+in = z*sin(omega0)/(z^2 - 2*z*cos(omega0) +1);
+
+out=iztrans(H1*in);
+Serie = subs(out,[sym("n")],0:200);
+p=plot(Serie);
+ax = gca;
+ax.XScale = 'linear';
+ax.YLim = [-1 1];
+ax.XTick = 0:50:200; % primo elemento: incremento : ultimo elemento (primo ed ultimo entro il dominio del grafico)
+xlabel('n')
+ylabel('value')
+```
+
+Si ottiene questo risultato:
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_10.jpg")
+</p>
+
+Proviamo infine a rendere ora l'echo instabile, ponendo $K=1.05$; otteniamo questo andamento divergente dell'uscita dell'echo:
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_11.jpg")
+</p>
+
