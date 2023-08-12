@@ -306,7 +306,7 @@ Vediamo ora come calcolare l'uscita dell'echo applicando in ingresso un segnale 
 (26) **$u(t)$ vale $0$ per $t<0$ ; vale $1$ per $t>=0$**
 
 <p align="left">
-<img width="400" src="/pi_pico_echo_stereo/media/z_12.jpg")
+<img width="400" src="/pi_pico_echo_stereo/media/z_15.jpg")
 </p>
 
 Il nostro ingresso di prova, nel tempo continuo, è quindi:
