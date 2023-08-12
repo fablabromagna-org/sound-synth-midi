@@ -290,6 +290,9 @@ Con $K = - 0.8$ otteniamo la seguente risposta, dove ogni successivo impulso vie
 <img width="500" src="/pi_pico_echo_stereo/media/z_8.jpg")
 </p>
 
+
+#### Cosa ne facciamo di H(z)? Studio della risposta ad una sinusoide
+
 Facciamo un passo avanti con un segnale in ingresso sinusoidale con frequenza $f$. Innanzitutto ci serve la trasformata Z del segnale $sin(ωt)$ con $ω=2pi*f$, utilizzando la nostra frequenza di campionamento $F_0$; poi, visto che ci interessa inviare il segnale sinusoidale a partire da $t=0$, azzeriamo la sinusoide per $t<0$ moltiplicandola per una funzione detta **gradino unitario** $u(t)$ così definita:
 
 (26) **$u(t)$ vale $0$ per $t<0$ ; vale $1$ per $t>=0$**
