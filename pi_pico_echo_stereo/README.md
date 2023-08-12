@@ -35,7 +35,7 @@ In termini di codice, lo schema a blocchi si traduce in una singola funzione lin
 allora il sample che possiamo leggere in uscita dal delay è $y(n-D)$:
 
 <p align="left">
-<img width="400" src="/pi_pico_echo_stereo/media/z_12.jpg")
+<img width="400" src="/pi_pico_echo_stereo/media/z_13.jpg")
 </p>
 
 All'uscita del blocco sommatore risulta quindi:
