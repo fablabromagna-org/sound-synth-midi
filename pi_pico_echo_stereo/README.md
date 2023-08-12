@@ -237,13 +237,13 @@ otteniammo la seguente risposta in frequenza
 <img width="500" src="/pi_pico_echo_stereo/media/z_6.jpg")
 </p>
 
-Si noti come l'inversione di fase dell'uscita (dovuta a $K<0$) riduca in modo sensibile tutta la parte bassa dello spettro, fino a che il ritardo di $30*25us = 750us$ non corrisponde a metà del periodo:
+Si noti come l'inversione di fase dell'uscita (dovuta a $K<0$) riduca in modo sensibile tutta la parte bassa dello spettro, fino alla frequenza $F_0$ per cui il ritardo introdotto dal delay, pari a $30*25us=750us$, corrisponde alla metà del periodo $T_0$: il segnale fornito dal delay risulta "in fase" rispetto all'ingresso. Calcoliamo questa prima frequenza:
 
-$T_0/2 = 750us$
+(24) &T_0/2=750us$
 
-$T_0 = 1500us$
+da cui:
 
-$F_0 = 1/T_0 \simeq 666Hz$
+(25) $F_0 = 1/T_0 \simeq 666Hz$.
 
 
 #### Cosa ne facciamo di H(z)? Studio della risposta all'impulso [INCOMPLETO]
@@ -252,7 +252,6 @@ Se l'analisi nel dominio delle frequenze fornisce informazioni sulla timbrica, l
 $C = 0.5$, $K = 0.8$, $D = 30$
 
 utilizzando le istruzioni seguenti:
-
 
 ```
 C = 0.5;
