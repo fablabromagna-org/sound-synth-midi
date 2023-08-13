@@ -2,6 +2,12 @@
 
 ### _Un esercizio per illustrare alcuni concetti dell'elaborazione audio real-time lineare e una sua modellizzazione_
 
+<p>
+
+</p>
+
+## File "simple_echo.ino"
+
 Questo semplice dispositivo realizzato con un Raspberry Pi Pico ed una coppia di DAC I2S MAX98357A, è un effetto echo stereo (anche detto delay) con campionamento 12bit - 40Ksps (samples per second); non include alcuna regolazione esterna né filtri anti aliasing agli ingressi, perchè lo scopo è puramente didattico.
 
 Al Pi Pico è demandato il ruolo di effettuare la lettura/campionamento dei segnali in ingresso (left - right) utilizzando il convertitore ADC 12bit interno alla board, quindi eseguire le elaborazioni necessarie (scrivere nelle code FIFO i sample letti, leggere sample dalle code FIFO, effettuare moltiplicazioni e somme), infine inviare un flusso audio digitale 16bit - 40Ksps a ciascuno dei due DAC, utilizzando connessioni fisiche a 3 fili con protocollo I2S.
@@ -371,3 +377,14 @@ Proviamo infine a rendere ora l'echo instabile, ponendo $K = 1.05$; otteniamo qu
 <img width="500" src="/pi_pico_echo_stereo/media/z_11.jpg")
 </p>
 
+## File "allpass_echo.ino"
+
+L'esercizio realizza un secondo effetto echo adottando uno schema più complesso, conosciuto come Schroeder all-pass filter:
+
+<p align="left">
+<img width="600" src="/pi_pico_echo_stereo/media/delay_17.jpg")
+</p>
+
+Seguendo il flusso ingresso uscita, risulta la seguente funzione di trasferimento discreta:
+
+$H(z) = K(1+F/Kz^{-D})/(1+KFz^{-D-1})
