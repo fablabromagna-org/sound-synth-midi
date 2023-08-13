@@ -392,3 +392,13 @@ Seguendo il flusso ingresso uscita, risulta la seguente funzione di trasferiment
 Verifichiamone la stabilità; riscriviamo la funzione di trasferimento $H(z) per evidenziarne i poli:
 
 (32) $H(z) = K(1z^D + F/K)/(z^D+KF)$
+
+Il sistema è stabile se e solo se tutti i poli di $H(z)$ hanno modulo <1; poichè i poli soddisfano:
+
+z^D = -DF
+
+le cui radici hanno modulo:
+
+$|z| = \sqrt[D]{|-DF|}$
+
+
