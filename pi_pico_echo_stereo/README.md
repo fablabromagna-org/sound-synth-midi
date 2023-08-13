@@ -387,4 +387,8 @@ L'esercizio realizza un secondo effetto echo adottando uno schema più complesso
 
 Seguendo il flusso ingresso uscita, risulta la seguente funzione di trasferimento discreta:
 
-$H(z) = K(1+F/Kz^{-D})/(1+KFz^{-D-1})$
+(31) $H(z) = K(1+F/Kz^{-D})/(1+KFz^{-D})$
+
+Verifichiamone la stabilità; riscriviamo la funzione di trasferimento $H(z) per evidenziarne i poli:
+
+(32) $H(z) = K(1z^D + F/K)/(z^D+KF)$
