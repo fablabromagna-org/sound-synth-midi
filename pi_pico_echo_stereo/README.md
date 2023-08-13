@@ -395,10 +395,10 @@ Verifichiamone la stabilità; riscriviamo la funzione di trasferimento $H(z) per
 
 Il sistema è stabile se e solo se tutti i poli di $H(z)$ hanno modulo <1; poichè i poli soddisfano:
 
-z^D = -DF
+$z^D = -DF$
 
-le cui radici hanno modulo:
+le cui radici hanno modulo $\sqrt[D]{|-DF|}$. La condizione di stabilità è allora:
 
-$|z| = \sqrt[D]{|-DF|}$
+$|DF|<1$
 
 
