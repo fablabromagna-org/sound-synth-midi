@@ -305,10 +305,6 @@ Vediamo ora come calcolare l'uscita dell'echo applicando in ingresso un segnale 
 
 (26) **$u(t)$ vale $0$ per $t<0$ ; vale $1$ per $t>=0$**
 
-<p align="left">
-<img width="400" src="/pi_pico_echo_stereo/media/z_15.jpg")
-</p>
-
 Il nostro ingresso di prova, nel tempo continuo, è quindi:
 
 (27) $x(t) = u(t)*sin(2\pi ft)$
@@ -316,8 +312,6 @@ Il nostro ingresso di prova, nel tempo continuo, è quindi:
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_16.jpg")
 </p>
-
-
 
 Nel campionamento, che ricordiamo avviene con periodo $T_0$ e frequenza $F_0 = 1/T_0$, leggiamo campioni del segnale d'ingresso agli istanti $0$, $T_0$, $2T_0$, ... Quindi a $t$ sostituiamo $nT_0$ ossia $n/F_0$; analogamente ad $u(t)$ sostituiamo $u(nT_0)$ che possiamo anche scrivere $u(n)$ (il valore della funzione campionata vale comunque $1$)
 
