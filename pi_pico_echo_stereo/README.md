@@ -382,9 +382,9 @@ Proviamo infine a rendere ora l'echo instabile, ponendo $K = 1.05$; otteniamo qu
 L'esercizio realizza un secondo effetto echo adottando uno schema più complesso, conosciuto come Schroeder all-pass filter:
 
 <p align="left">
-<img width="600" src="/pi_pico_echo_stereo/media/delay_17.jpg")
+<img width="600" src="/pi_pico_echo_stereo/media/z_17.jpg")
 </p>
 
 Seguendo il flusso ingresso uscita, risulta la seguente funzione di trasferimento discreta:
 
-$H(z) = K(1+F/Kz^{-D})/(1+KFz^{-D-1})
+$H(z) = K(1+F/Kz^{-D})/(1+KFz^{-D-1})$
