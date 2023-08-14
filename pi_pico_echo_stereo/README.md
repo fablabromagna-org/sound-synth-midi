@@ -185,7 +185,7 @@ Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.
 ```
 C = 0.5;
 K = -0.8;
-// D = 30;
+% D = 30;
 
 % la funzione di trasferimento razionale è descritta nella forma b(z^-1)/c(z^-1)
 % dove il numeratore b = b0 + b1z^-1 + b2z^-2 + b3z^-3 .....
@@ -428,9 +428,9 @@ hanno quindi modulo $\sqrt[D]{|KF|}$; la condizione di stabilità è allora:
 Descriviamo nell'ambiente Mathworks la funzione di trasferimento $H(z)$:
 
 ```
-C = 0.5;
-K = -0.8;
-// D = 30;
+F = 0.5;
+K = 0.8;
+% D = 30;
 
 % la funzione di trasferimento razionale è descritta nella forma b(z^-1)/c(z^-1)
 % dove il numeratore b = b0 + b1z^-1 + b2z^-2 + b3z^-3 .....
@@ -472,6 +472,10 @@ ylabel('Magnitude (dB)');
 
 Quindi, col set di valori:
 
-$C = 0.5$, $K = 0.8$, $D = 30$
+$F = 0.5$, $K = 0.8$, $D = 30$
 
 Risulta:
+
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_12.jpg")
+</p>
