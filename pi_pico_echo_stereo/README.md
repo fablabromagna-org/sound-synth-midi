@@ -474,7 +474,7 @@ Quindi, col set di valori:
 
 $F = 0.5$, $K = 0.8$, $D = 30$
 
-Risulta:
+Si ottiene la seguente risposta in frequenza:
 
 <p align="left">
 <img width="500" src="/pi_pico_echo_stereo/media/z_12.jpg")
