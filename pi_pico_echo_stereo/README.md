@@ -391,13 +391,15 @@ Per calcolarne la relazione ingresso-uscita aggiungiamo il valore $a(n)$:
 <img width="600" src="/pi_pico_echo_stereo/media/z_20.jpg")
 </p>
 
-(31) $x(n) - KFa(n-D) = a(n)$
-(32) $Fa(n-D) + Ka(n) = y(n)$
+(31) $a(n) = x(n) - KFa(n-D)$
+
+(32) $y(n) = Fa(n-D) + Ka(n)$
 
 Calcoliamo la trasformata Z dei membri delle due uguaglianze:
 
-(33) $X(z) - KFz{-D}A(z) = A(z)$
-(34) $Fz{-D}A(z) + KA(z) = Y(z)$
+(33) $A(z) = X(z) - KFz{-D}A(z)$
+
+(34) $Y(z) = Fz{-D}A(z) + KA(z)$
 
 Dalla (33) ricaviamo:
 
@@ -405,16 +407,67 @@ Dalla (33) ricaviamo:
 
 da cui ricaviamo, dopo alcuni passaggi:
 
-(36) $H(z) = K(1 + F/Kz^{-D})/(1+KFz^{-D})$
+(36) $H(z) = K(1 + F/Kz^{-D})/(1 + KFz^{-D}) = K(z^D + F/K)/(z^D + KF)$
 
-Verifichiamone la stabilità; riscriviamo la funzione di trasferimento $H(z) per evidenziarne i poli:
+### Condizioni per la stabilità
 
-(37) $H(z) = K(z^D + F/K)/(z^D+KF)$
+I cui poli della funzione di trasferimento (36) soddisfano:
 
-I cui poli soddisfano:
+(37) $z^D = -KF$
 
-$z^D = -KF$
+hanno quindi modulo $\sqrt[D]{|-KF|}$; la condizione di stabilità è:
 
-le cui radici hanno modulo $\sqrt[D]{|-KF|}$. La condizione di stabilità è allora:
+(38) $|KF|<1$.
 
-$|KF|<1$
+### Studio della risposta in frequenza
+
+Descriviamo nell'ambiente Mathworks la funzione di trasferimento $H(z)$:
+
+```
+C = 0.5;
+K = -0.8;
+// D = 30;
+
+% la funzione di trasferimento razionale è descritta nella forma b(z^-1)/c(z^-1)
+% dove il numeratore b = b0 + b1z^-1 + b2z^-2 + b3z^-3 .....
+% e il denominatore a = a0 + a1z^-1 + a2z^-2 + a3z^-3 .....
+
+% a, b vengono descritti tramite vettori, in cui si inseriscono i soli coefficienti b_k e a_k
+b1 = [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F/K];
+a =  [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 K*F];
+
+b = K * b1;
+```
+
+Le successive istruzioni consentono la visualizzazione della risposta in frequenza:
+
+```
+% Frequency response
+[h,w] = freqz(b,a,1000); % 1000 punti di valutazione
+
+% Il passaggio al dominio delle frequenze avviene con la sostituzione seguente:
+% z --> e^(jῶ)
+% dove ῶ è la pulsazione normalizzata al tempo di campionamento T; detta F la frequenza di campionamento:
+% ῶ = 2π/(t/T) = 2πf/F
+% 
+% quindi anche:
+% f = (ῶF)/2π
+% 
+% i valori estremi sono:
+% ῶ = 0 <--> f = 0
+% ῶ = π <--> 2π*f/F = π <--> f = F/2 che rappresenta la frequenza di Nyquist (massima campionabile senza perdita di informazione)
+
+plot((w*40)/(2*pi), 20*log10(abs(h))); % 40 corrisponde alla frequenza di campionamento scalata 40ksps/1000
+ax = gca;
+ax.XScale = 'log';
+ax.YLim = [-20 20];
+ax.XTick = 0:5:20; % primo elemento: incremento : ultimo elemento (primo ed ultimo entro il dominio del grafico)
+xlabel('kHz');
+ylabel('Magnitude (dB)');
+```
+
+Quindi, col set di valori:
+
+$C = 0.5$, $K = 0.8$, $D = 30$
+
+Risulta:
