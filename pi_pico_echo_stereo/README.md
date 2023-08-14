@@ -379,24 +379,42 @@ Proviamo infine a rendere ora l'echo instabile, ponendo $K = 1.05$; otteniamo qu
 
 ## File "allpass_echo.ino"
 
-L'esercizio realizza un secondo effetto echo adottando uno schema più complesso, conosciuto come Schroeder all-pass filter:
+L'esercizio realizza l'effetto echo adottando uno schema più complesso, conosciuto come Schroeder all-pass filter:
 
 <p align="left">
 <img width="600" src="/pi_pico_echo_stereo/media/z_18.jpg")
 </p>
 
-Seguendo il flusso ingresso uscita, risulta la seguente funzione di trasferimento discreta:
+Per calcolarne la relazione ingresso-uscita aggiungiamo il valore $a(n)$:
 
-(31) $H(z) = K(1+F/Kz^{-D})/(1+KFz^{-D})$
+<p align="left">
+<img width="600" src="/pi_pico_echo_stereo/media/z_19.jpg")
+</p>
+
+(31) $x(n) - KFa(n-D) = a(n)$
+(32) $Fa(n-D) + Ka(n) = y(n)$
+
+Calcoliamo la trasformata Z dei membri delle due uguaglianze:
+
+(33) $X(z) - KFz{-D}A(z) = A(z)$
+(34) $Fz{-D}A(z) + KA(z) = Y(z)$
+
+Dalla (33) ricaviamo:
+
+(35) $A(z) = X(z) / (1 + KFz{-D})$
+
+da cui ricaviamo, dopo alcuni passaggi:
+
+(36) $H(z) = K(1 + F/Kz^{-D})/(1+KFz^{-D})$
 
 Verifichiamone la stabilità; riscriviamo la funzione di trasferimento $H(z) per evidenziarne i poli:
 
-(32) $H(z) = K(1z^D + F/K)/(z^D+KF)$
+(37) $H(z) = K(z^D + F/K)/(z^D+KF)$
 
-Il sistema è stabile se e solo se tutti i poli di $H(z)$ hanno modulo <1; poichè i poli soddisfano:
+I cui poli soddisfano:
 
-$z^D = -DF$
+$z^D = -KF$
 
-le cui radici hanno modulo $\sqrt[D]{|-DF|}$. La condizione di stabilità è allora:
+le cui radici hanno modulo $\sqrt[D]{|-KF|}$. La condizione di stabilità è allora:
 
-$|DF|<1$
+$|KF|<1$
