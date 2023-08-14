@@ -391,7 +391,7 @@ e conosciuto come Schroeder all-pass filter:
 <img width="600" src="/pi_pico_echo_stereo/media/z_18.jpg")
 </p>
 
-Per calcolarne la relazione ingresso-uscita aggiungiamo il valore $a(n)$:
+Per calcolarne la relazione ingresso-uscita al generico istante $n$ aggiungiamo il valore $a(n)$:
 
 <p align="left">
 <img width="600" src="/pi_pico_echo_stereo/media/z_20.jpg")
