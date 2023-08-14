@@ -415,7 +415,7 @@ I cui poli della funzione di trasferimento (36) soddisfano:
 
 (37) $z^D = -KF$
 
-hanno quindi modulo $\sqrt[D]{|-KF|}$; la condizione di stabilità è:
+hanno quindi modulo $\sqrt[D]{|KF|}$; la condizione di stabilità è:
 
 (38) $|KF|<1$.
 
