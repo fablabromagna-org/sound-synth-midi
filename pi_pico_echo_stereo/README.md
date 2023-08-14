@@ -382,7 +382,7 @@ Proviamo infine a rendere ora l'echo instabile, ponendo $K = 1.05$; otteniamo qu
 L'esercizio realizza un secondo effetto echo adottando uno schema più complesso, conosciuto come Schroeder all-pass filter:
 
 <p align="left">
-<img width="600" src="/pi_pico_echo_stereo/media/z_17.jpg")
+<img width="600" src="/pi_pico_echo_stereo/media/z_18.jpg")
 </p>
 
 Seguendo il flusso ingresso uscita, risulta la seguente funzione di trasferimento discreta:
@@ -400,5 +400,3 @@ $z^D = -DF$
 le cui radici hanno modulo $\sqrt[D]{|-DF|}$. La condizione di stabilità è allora:
 
 $|DF|<1$
-
-
