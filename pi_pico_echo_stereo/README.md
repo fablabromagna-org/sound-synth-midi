@@ -395,7 +395,7 @@ Per calcolarne la relazione ingresso-uscita aggiungiamo il valore $a(n)$:
 
 (32) $y(n) = Fa(n-D) + Ka(n)$
 
-Calcoliamo la trasformata Z dei membri delle due uguaglianze:
+Calcolando la trasformata Z di entrambi i membri delle due uguaglianze, otteniamo:
 
 (33) $A(z) = X(z) - KFz{-D}A(z)$
 
@@ -407,17 +407,21 @@ Dalla (33) ricaviamo:
 
 da cui ricaviamo, dopo alcuni passaggi:
 
-(36) $H(z) = K(1 + F/Kz^{-D})/(1 + KFz^{-D}) = K(z^D + F/K)/(z^D + KF)$
+(36) $Y(z) = X(z) (K + Fz^{-D})/(1 + KFz^{-D}) 
+
+da cui:
+
+(37) $H(z) = K(1 + F/Kz^{-D})/(1 + KFz^{-D}) = K(z^D + F/K)/(z^D + KF)$
 
 ### Condizioni per la stabilità
 
-I cui poli della funzione di trasferimento (36) soddisfano:
+I poli della funzione di trasferimento (37) soddisfano:
 
-(37) $z^D = -KF$
+(38) $z^D = -KF$
 
-hanno quindi modulo $\sqrt[D]{|KF|}$; la condizione di stabilità è:
+hanno quindi modulo $\sqrt[D]{|KF|}$; la condizione di stabilità è allora:
 
-(38) $|KF|<1$.
+(39) $|KF|<1$.
 
 ### Studio della risposta in frequenza
 
