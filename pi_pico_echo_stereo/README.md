@@ -379,15 +379,17 @@ Proviamo infine a rendere ora l'echo instabile, ponendo $K = 1.05$; otteniamo qu
 
 ## File "allpass_echo.ino"
 
-L'esercizio realizza l'effetto echo adottando uno schema leggermente più complesso, conosciuto come Schroeder all-pass filter:
-
-<p align="left">
-<img width="600" src="/pi_pico_echo_stereo/media/z_18.jpg")
-</p>
+L'esercizio realizza l'effetto echo adottando uno schema leggermente più complesso, proposto da Manfred Robert Schroeder:
 
 ![Schroeder](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Schr%C3%B6der%2CManfred_1993_G%C3%B6ttingen.jpg/220px-Schr%C3%B6der%2CManfred_1993_G%C3%B6ttingen.jpg)
 
 <sup>_Manfred Robert Schroeder (1926–2009)_</sup>
+
+e conosciuto come Schroeder all-pass filter:
+
+<p align="left">
+<img width="600" src="/pi_pico_echo_stereo/media/z_18.jpg")
+</p>
 
 Per calcolarne la relazione ingresso-uscita aggiungiamo il valore $a(n)$:
 
