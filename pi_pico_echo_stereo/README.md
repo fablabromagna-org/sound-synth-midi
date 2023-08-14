@@ -388,7 +388,7 @@ L'esercizio realizza l'effetto echo adottando uno schema più complesso, conosci
 Per calcolarne la relazione ingresso-uscita aggiungiamo il valore $a(n)$:
 
 <p align="left">
-<img width="600" src="/pi_pico_echo_stereo/media/z_19.jpg")
+<img width="600" src="/pi_pico_echo_stereo/media/z_20.jpg")
 </p>
 
 (31) $x(n) - KFa(n-D) = a(n)$
