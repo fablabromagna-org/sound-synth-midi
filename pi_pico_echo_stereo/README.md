@@ -204,6 +204,7 @@ Le successive istruzioni consentono la visualizzazione della risposta in frequen
 
 % Il passaggio al dominio delle frequenze avviene con la sostituzione seguente:
 % z --> e^(jῶ)
+%
 % dove ῶ è la pulsazione normalizzata al tempo di campionamento T; detta F la frequenza di campionamento:
 % ῶ = 2π/(t/T) = 2πf/F
 % 
@@ -429,7 +430,7 @@ I poli della funzione di trasferimento (37) soddisfano:
 
 hanno quindi modulo $\sqrt[D]{|KF|}$; la condizione di stabilità è allora:
 
-(39) $|KF|<1$.
+(39) $|KF|<1$
 
 ### Studio della risposta in frequenza
 
@@ -459,6 +460,7 @@ Le successive istruzioni consentono la visualizzazione della risposta in frequen
 
 % Il passaggio al dominio delle frequenze avviene con la sostituzione seguente:
 % z --> e^(jῶ)
+%
 % dove ῶ è la pulsazione normalizzata al tempo di campionamento T; detta F la frequenza di campionamento:
 % ῶ = 2π/(t/T) = 2πf/F
 % 
