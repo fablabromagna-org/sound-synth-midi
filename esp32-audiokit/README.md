@@ -37,6 +37,9 @@ Di seguito invece alcune "mancanze" emerse durante la sperimentazione (da verifi
 - mancanza di connessione MIDI USB Host (per connettere direttamente, ad esempio, una master keyboard USB)
 - mancanza di un LCD integrato (facilmente aggirabile utilizzando display esterni SPI, ma occorre capire se coesistenti con la SD - oppure I2C)
 - numero limitato di GPIO, aggirabile eventualmente con expander i2c
+- mancanza di un pin di uscita 5V con cui alimentare altre schede
+- mancanza di pin di alimentazione alternativo, oltre alla porta micro-USB
+
 
 
 ## SDK, Librerie e Software
@@ -99,4 +102,4 @@ La maggior parte dei progetti di Marcel sono corredati da video YouTube che most
 
 Dopo l'introduzione sulla scheda ESP32-AudioKit e la carrellata sui possibili framework da utilizzare, seguono una serie di articoli riguardanti esperienze personali di utilizzo, difficoltà incontrate, soluzioni adottate. Il tutto per fare il punto sulle possibilità di sviluppo, sulla maturità dei framework e sulla effettiva facilità di programmazione, che non sempre è quella dichiarata sulla carta.
 
-_to be continued_
+- [Diario dei test](docs/testing_journal.md)
