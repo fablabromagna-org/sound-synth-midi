@@ -146,7 +146,7 @@ Attraverso questa serie di passaggi abbiamo trasformato la relazione che lega in
 
 
 
-#### Cosa ne facciamo di H(z)? Condizioni per la stabilità
+### Cosa ne facciamo di H(z)? Condizioni per la stabilità
 La conoscenza della funzione di trasferimento dell'echo consente per prima cosa di studiarne la stabilità. Le funzioni di trasferimento ricavate da algoritmi lineari sono **funzioni razionale fratte** in $z$, cioè esprimibili con un numeratore $A(z)$ ed un denominatore $B(z)$ che sono polinomi in $z$:
 
 (17) $H(z) = A(z)/B(z)$
@@ -179,7 +179,7 @@ i cui poli sono i valori di $z$ per cui di $(z^D - K)$ si annulla, cioè per cui
 Si tratta di una particolare equazione di grado $D$ in $z$ (per approfondimenti: https://www.unife.it/ing/informazione/analisi-matematica-Ib/lezioni-ed-esercizi/lezione-4-radici-n-esime-in-campo-complesso), le cui $D$ radici hanno lo stesso modulo $\sqrt[D]{|K|}$, che è un numero minore di 1 solo se e solo se $|K|<1$: ciò significa che il nostro echo è stabile se e solo se $|K|<1$.
 
 
-#### Cosa ne facciamo di H(z)? Studio della risposta in frequenza
+### Cosa ne facciamo di H(z)? Studio della risposta in frequenza
 Utilizzando lo strumento di calcolo automatico online Mathworks (https://matlab.mathworks.com/) disponibile gratuitamente per un uso limitato a max 20h/mese, possiamo visualizzare la _risposta in frequenza_ del nostro echo. Nell'ambiente Mathworks, questa la descrizione della funzione di trasferimento $H(z)$
 
 ```
@@ -260,7 +260,7 @@ da cui:
 (25) $F_0 = 1/T_0 \simeq 666Hz$.
 
 
-#### Cosa ne facciamo di H(z)? Studio della risposta all'impulso
+### Cosa ne facciamo di H(z)? Studio della risposta all'impulso
 Se l'analisi nel dominio delle frequenze fornisce informazioni sulla timbrica, l'analisi nel dominio dei tempi, in cui si confronta il segnale di ingresso col segnale in uscita, fornisce informazioni forse più utili sull'echo, trattandosi di un effetto cui si richiede fondamentalmente la moltiplicazione nel tempo di singoli eventi. Se:
 
 $C = 0.5$, $K = 0.8$, $D = 30$
@@ -305,7 +305,7 @@ Con $K = - 0.8$ otteniamo la seguente risposta, dove ogni successivo impulso vie
 </p>
 
 
-#### Cosa ne facciamo di H(z)? Studio della risposta ad una sinusoide
+### Cosa ne facciamo di H(z)? Studio della risposta ad una sinusoide
 
 Vediamo ora come calcolare l'uscita dell'echo applicando in ingresso un segnale sinusoidale. Partiamo dalla funzione $sin(ωt)$ con $ω=2\pi f$, dove $f$ è la frequenza; poi, visto che ci interessa inviare il segnale sinusoidale a partire da $t=0$, azzeriamo la sinusoide per $t<0$ moltiplicandola per una funzione detta **gradino unitario** $u(t)$ così definita:
 
@@ -485,5 +485,39 @@ $F = 0.5$, $K = 0.8$, $D = 30$
 Si ottiene la seguente risposta in frequenza:
 
 <p align="left">
-<img width="500" src="/pi_pico_echo_stereo/media/z_12.jpg")
+<img width="500" src="/pi_pico_echo_stereo/media/z_15.jpg")
+</p>
+
+
+### Studio della risposta all'impulso
+
+Per calcolare la risposta all'impulso unitario utilizziamo le istruzioni seguenti:
+
+```
+F = 0.9;
+K = 0.8;
+D = 30;
+
+% funzione di trasferimento
+syms z
+H = K*(z^D + F/K)/(z^D + K*F)
+
+% ingresso
+in = 1; % impulso unitario
+
+% risposta nel dominio dei tempi
+out=iztrans(H*in);
+Serie = subs(out,[sym("n")],0:300);
+p=plot(Serie);
+ax = gca;
+ax.XScale = 'linear';
+ax.YLim = [-1 1];
+ax.XTick = 0:50:300; % primo elemento: incremento : ultimo elemento (primo ed ultimo entro il dominio del grafico)
+xlabel('n')
+ylabel('value')
+```
+
+ottenendo:
+<p align="left">
+<img width="500" src="/pi_pico_echo_stereo/media/z_21.jpg")
 </p>
