@@ -436,7 +436,7 @@ hanno quindi modulo $\sqrt[D]{|KF|}$; la condizione di stabilità è allora:
 Descriviamo nell'ambiente Mathworks la funzione di trasferimento $H(z)$:
 
 ```
-F = 0.5;
+F = 0.9;
 K = 0.8;
 % D = 30;
 
@@ -480,7 +480,7 @@ ylabel('Magnitude (dB)');
 
 Quindi, col set di valori:
 
-$F = 0.5$, $K = 0.8$, $D = 30$
+$F = 0.9$, $K = 0.8$, $D = 30$
 
 Si ottiene la seguente risposta in frequenza:
 
