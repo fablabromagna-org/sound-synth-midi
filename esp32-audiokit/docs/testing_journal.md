@@ -79,3 +79,18 @@ Ho inoltre provato a compilare il progetto [esp32_midi_sampler](https://github.c
 Devo quindi provare con la MK più grossa, dotata di pulsanti aggiuntivi. In alternativa stavo pensado di implementare una semplice applicazione Python (magari con kivy) per generare una sorta di pulsantiera sw virtuale (ispirata al Novation Launchpad) che permetta di abbinare un CC ad ogni pulsante, e inviarlo poi attraverso ttymidi.
 
 Al momento ho sospeso i test per completare il progetto MiniDex che stavo montando usando un Raspberry Pi Zero 2. Tornerò quindi sul pezzo nei prossimi giorni.
+
+
+## Sviluppo applicazione Kivy per invio messaggi MIDI - 18/08/2023
+
+Ho deciso di provare ad implementare una semplice applicazione Python/Kivy per poter generare messaggi MIDI arbitrari in maniera semplice e senza l'ausilio di HW o controller esterni.
+
+Tante volte infatti mi risulta più comodo eseguire i test con la ESP32-Audiokit utilizzando solo il PC per inviare MIDI. Tra l'altro il fatto di avere un notebook con touchscreen rende l'utilizzo immediato.  
+
+Ho pubblicato il progetto qui, seppure sia in uno stato ancora molto embrionale: [vMIDIPad](https://github.com/fablabromagna-org/vMIDIPad)
+
+L'obiettivo, nei prossimi giorni,  è quello di completare la possibilità di configurare il messaggio MIDI assegnato ad ogni pulsante tramite popup di configurazione, e di permettere il salvataggio e il caricamento del layout (righe x colonne selezionato da utente) e relativi messaggi associati.
+
+Al momento è comunque già possibile configurare i pulsanti via codice python e utilizzare l'applicazione per i primi test
+
+
