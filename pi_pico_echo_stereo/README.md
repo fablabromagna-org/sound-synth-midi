@@ -27,11 +27,16 @@ Lo schema ingresso-uscita seguente illustra l'articolazione dell'effetto echo ne
 <img width="600" src="/pi_pico_echo_stereo/media/delay_0.jpg")
 </p>
 
-Lo schema nasce da una semplice intuizione: per esperienza comune un suono con eco è dato dalla somma (in aria) del suono origine, dello stesso suono riflesso (che giunge con un certo ritardo all'origine), e delle ulteriori riflessioni delle riflessioni.
+Lo schema nasce da una semplice intuizione: per esperienza comune l'eco è dovuto alla riflessione del suono emesso. L'eco raggiunge la sorgente con un ritardo proporzionale alla distanza dalla superficie riflettente; più superfici riflettenti creano una sequenza di eco.
 
-Nel passaggio dallo schema a blocchi al codice occorre tener presente che il segnale trattato non è continuo ma campionato; non a tempo continuo ma a tempo discreto. Questo significa che occorre elaborare singoli campioni e fornire in uscita, analogamente, singoli campioni.
+Nel passaggio dallo schema a blocchi al codice occorre tener presente che il segnale trattato non è continuo ma campionato; non è un segnale "tempo continuo" ma "tempo discreto": è una sequenza di valori numerici a 12 bit con cadenza pari a 40.000 campioni per secondo. In ingresso, il segnale audio analogico viene letto da un convertitore ADC interno al microcontrollore, ed è fondamentale garantire un ritmo di campionamento costante (40Kbps, cioè una lettura ogni 25μs). In uscita, una sequenza di valori con analoghe caratteristiche di regolarità temporale (un valore ogni 25μs) viene fornito ad un convertitore DAC, che lo converte in segnale analogico.
 
-Nell'esercizio, il codice ha la totale responsabilità del rispetto del timing. La funzione "repeating_timer_callback", che viene chiamata via interrupt ogni 25us (tempo di campionamento), svolge la funzione di leggere (campionare) i due segnali in ingresso (utilizzando i convertitori AD interni alla scheda Raspberry Pi Pico), effettuare le elaborazioni audio richieste, infine inviare due campioni (sample) ai due convertitori DA esterni. 25us rappresenta il tempo concesso per effettuare l'elaborazione audio desiderata, e corrisponde ad una frequenza di campionamento pari a 40ksps.
+Nell'esercizio, una routine esterna ha la responsabilità di chiamare ogni 25μs la funzione "repeating_timer_callback"; ad ogni chiamata, questa funzione:
+- legge un campione da ciascun canale audio analogico in ingresso (utilizzando i convertitori ADC interni alla scheda Raspberry Pi Pico),
+- effettua le elaborazioni audio richieste,
+- invia un campione (sample) a ciascun convertitori DAC esterno,
+
+entro 25μs.
 
 In termini di codice, lo schema a blocchi si traduce in una singola funzione lineare; infatti se:
 - $D$ è il valore del ritardo (come numero di sample) introdotto dal blocco delay
@@ -48,7 +53,7 @@ All'uscita del blocco sommatore risulta quindi:
 
 (1) $y(n) = Cx(n) + Ky(n-D)$
 
-La presenza dei parametri $C$ e $K$ è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro $K$ ha una ulteriore importante ricaduta, perchè da esso dipende la **stabilità** dell'algoritmo: per valori $K>1$ il calcolo diverge rapidamente in presenza del più piccolo e breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori semplici strumenti di analisi.
+La presenza dei parametri $C$ e $K$ è prima di tutto dovuta al fatto che la lunghezza di parola è finita (16bit), ed essi aiutano a prevenire fenomeni di saturazione numerica. Il parametro $K$ ha una ulteriore importante ricaduta, perchè da esso dipende la **stabilità** dell'algoritmo: per valori $K>1$ il calcolo diverge rapidamente in presenza del più piccolo/breve segnale in ingresso. Tratteremo il tema della stabilità nelle sezioni successive introducendo ulteriori strumenti di analisi.
 
 Il blocco delay è realizzato con un array di dimensione almeno pari a $D+1$; nel codice si usano due array, uno per canale, di dimensione 14000, in grado di memorizzare 14000 sample, pari a 14000\*25us=350ms; il valore massimo per D è quindi 13999\*25us.
 
