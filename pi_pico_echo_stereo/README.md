@@ -21,7 +21,7 @@ https://github.com/fablabromagna-org/sound-synth-midi/assets/41198542/2fde0d05-7
 
 ### Schema a blocchi
 
-Lo schema ingresso-uscita seguente illustra l'articolazione dell'effetto echo nei suoi componenti: il delay ed i blocchi sommatore e moltiplicatore , l'interconnessione tra gli stessi e la direzione del flusso di elaborazione.
+Lo schema ingresso-uscita seguente illustra l'articolazione dell'effetto echo nei suoi componenti. Sono rappresentati un blocco di ritardo temporale, un blocco sommatore, due blocchi moltiplicatore; le linee con le frecce indicano l'interconnessione tra i vari blocchi e la disposizione ingresso/uscita.
 
 <p align="left">
 <img width="600" src="/pi_pico_echo_stereo/media/delay_0.jpg")
