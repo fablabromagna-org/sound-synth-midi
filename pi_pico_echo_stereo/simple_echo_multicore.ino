@@ -17,7 +17,10 @@ Single-Supply Operation (2.5V to 5.5V)
 // board "Raspberry Pi Pico"
 // n.2 DAC MAX98357A: The output is a ~300KHz square wave PWM that is then 'averaged out' by the speaker coil.
 
-// ** Dual core **
+// Opzioni per la corretta compilazione
+// clock: 240MHz oppure 250MHz
+
+// Note
 // Il codice dedica ciascun core all'elaborazione relativa ad uno dei canali: core0 --> Left, core1 --> Right
 
 #include <arduino.h>
@@ -70,7 +73,9 @@ You can have a gain of 3dB, 6dB, 9dB, 12dB or 15dB.
     3dB if a 100K resistor is connected between GAIN and Vin
 */
 
-#define Fs 40000  // coerente con il timing di questo codice
+// Frequenza di campionamento
+#define Fs 40000
+
 // Istanzio due timer
 struct repeating_timer timer_L;
 struct repeating_timer timer_R;
@@ -82,7 +87,7 @@ int in_PIN_R = A1;  // 0 --> 3.3V ; Raspberry Pi Pico has a 12-bit resolution GP
 uint16_t in_value_R = 0;
 
 // La coppia di delay (L, R) e' realizzata con due array, della stesssa dimensione, utilizzati come code FIFO per salvare i campioni audio a 16bit
-#define D_fifo_dim 14000  // 44100 --> 1 sec
+#define D_fifo_dim 14000  // 44100 --> 1 sec, 14000 campioni --> 350ms
 
 // coda fifo L
 uint16_t D_fifo_L[D_fifo_dim] = { 0x00 };  // array usato come FIFO per il delay
@@ -104,10 +109,10 @@ bool f0 = false;
 
 
 // ***********************************************************
-// ***********  TUTTO SI MATERIALIZZA QUI...  ****************
+// **************  ELABORAZIONE FLUSSI AUDIO  ****************
 // ***********************************************************
-// codice Hunter Timer ISR
-// Ad ogni chiamata va fornito agli ADC L ed R 1 solo campione, quindi il tempo disponibile per ogni ciclo e': 1/40KHz --> 25us
+// Questa funzione è chiamata attraverso un interrupt con frequenza (di campionamento) Fs pari a 40000.
+// Ad ogni chiamata va fornito agli ADC L ed R un solo campione, quindi il tempo disponibile per ogni ciclo e': 1/40kHz --> 25us
 
 // Procedura per il canale Left
 bool repeating_timer_callback_L(struct repeating_timer *t)

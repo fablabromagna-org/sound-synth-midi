@@ -22,9 +22,11 @@ Single-Supply Operation (2.5V to 5.5V)
 // board "Raspberry Pi Pico"
 // 2 x DAC MAX98357A
 
+// Opzioni per la corretta compilazione
+// clock: 200MHz
+
 #include <arduino.h>
 #include <I2S.h>
-
 
 // istanzio link i2S per ADC canale L
 I2S i2s_L(OUTPUT);
@@ -74,8 +76,10 @@ You can have a gain of 3dB, 6dB, 9dB, 12dB or 15dB.
     3dB if a 100K resistor is connected between GAIN and Vin
 */
 
-// variabili "Hunter"
+// Frequenza di campionamento
 #define Fs 40000
+
+// Instanzio il timer
 struct repeating_timer timer;
 
 // ingressi audio
@@ -86,7 +90,7 @@ uint16_t in_value_R = 0;
 
 // delay
 // La coppia di delay (L, R) e' realizzata con due array, della stesssa dimensione, utilizzati come code FIFO per salvare i campioni audio a 16bit
-#define D_fifo_dim 14000 // 14000 campioni corrispondono a 350ms
+#define D_fifo_dim 14000 // 14000 campioni --> 350ms
 
 // coda fifo L
 uint16_t D_fifo_L[D_fifo_dim] = {0x00}; // array usato come FIFO per il delay
@@ -196,7 +200,7 @@ void setup()
             ; // stop
     }
 
-    // Codice Hunter; negative delay so means we will call repeating_timer_callback, and call it again
+    // Hunter; negative delay so means we will call repeating_timer_callback, and call it again
     // 25us (40kHz) later regardless of how long the callback took to execute
     add_repeating_timer_us(-25, repeating_timer_callback, NULL, &timer);
 }
